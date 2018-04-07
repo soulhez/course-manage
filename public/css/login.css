@@ -1,0 +1,85 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: "微软雅黑 Light";
+}
+
+.logo {
+    font-family: "AR PL UKai CN","Noto Sans CJK JP Bold";
+    position: absolute;
+    margin-top: 80px;
+    margin-left: 40%;
+    font-size: 45px;
+    color: #51cc73;
+}
+.login-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    overflow: hidden;
+    background: url('./static/image/background.jpg');
+}
+
+.login-container .login-putin{
+    width:400px;
+    height: 300px;
+    position:absolute;
+    left:50%;
+    margin-left: -200px;
+    top:50%;
+    margin-top:-100px;
+    padding:50px 20px;
+    box-shadow: 3px 7px 21px rgba(0,0,0,3);
+    border-radius:5px;
+    background: white;
+}
+
+.input-container{
+    margin-left: 50px;
+    margin-bottom: 25px;
+    height: 40px;
+}
+
+.submit-button{
+    margin-left:50px;
+    background: #51cc73;
+    border-color: #51cc73;
+    width:260px;
+    height: 40px;
+    color:white;
+    font-size: 18px;
+}
+
+.input-style {
+    height: 40px;
+    width:260px;
+    font-size: 16px;
+    line-height: 16px;
+    -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -moz-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input-style:hover{
+    border-color: #cccccc;
+    -webkit-box-shadow: 0 0 5px #ffffff;
+    box-shadow: 0 0 5px #ffffff;
+}
+
+.input-style:focus{
+    border-color: #35b558 !important;
+    -webkit-box-shadow: 0 0 5px #51cc73 !important;
+    box-shadow: 0 0 5px #51cc73 !important;
+}
+
+.identity {
+    margin-left: 120px;
+    margin-top:-10px;
+    margin-bottom: 15px;
+}
+
+.radio-position{
+    display: inline-block;
+    margin-right: 25px;
+}
