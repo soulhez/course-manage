@@ -6,7 +6,7 @@ class Login extends Component {
     submitLogin(){
         let userName=$("#username").val();
         let passWord=$("#password").val();
-        let identity=$("input[type='radio']:checked").val();
+        let identity=$("input[type=radio]:checked").val();
 
         if(userName === ""){
            alert("用户名不能为空");
@@ -21,8 +21,19 @@ class Login extends Component {
 
     componentDidUpdate(){
         var isRight=this.props.isRight;
-       if(isRight === "1"){
-            browserHistory.push('/');
+        if(isRight === "0"){
+            $('input[id=username]').val("");
+            $('input[id=username]').focus();
+           alert( "用户不存在");
+        }else if(isRight === "-1"){
+            $('input[id=password]').val("");
+            $('input[id=password]').focus();
+            alert("密码错误");
+        }else if(isRight === "-2"){
+            $('input[name=identity]').attr("checked",false);
+            alert("身份验证失败");
+        }else{
+            browserHistory.push('/home');
         }
     }
 
