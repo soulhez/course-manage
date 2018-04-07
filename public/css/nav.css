@@ -1,0 +1,39 @@
+
+#userInformation{
+    font-size: 14px;
+    line-height: 40px;
+    float:right;
+    padding-right: 50px;
+    color: white;
+}
+.logoName{
+    text-align: center;
+    font-size: 30px;
+    line-height: 50px;
+    color:#b4a078;
+    font-weight: 900;
+}
+
+.tip{
+    background-color: #333;
+    height:40px;
+}
+
+.topic{
+    font-size: 14px;
+    line-height: 40px;
+    float:left;
+    padding-left: 50px;
+    color: white;
+}
+
+.login{
+    margin-right: 20px;
+}
+
+.theme{
+    text-align: center;
+    font-weight: 300;
+    font-size: 40px;
+    color:#b4a078
+}

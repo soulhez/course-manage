@@ -2,7 +2,9 @@ import React from 'react';
 import {render} from "react-dom";
 import {Provider} from "react-redux";
 import {Router, Route, browserHistory} from 'react-router';
-import LoginRegister from "./containers/login"
+import Login from "./containers/login-container"
+import Register from "./containers/register-contaienr";
+import Home from "./containers/home"
 import {createStore, applyMiddleware} from 'redux';
 import reducer from "./reducers/index"
 
@@ -14,7 +16,9 @@ const store = createStoreWithMiddleware(reducer);
 render(
     <Provider store={store}>
         <Router history={browserHistory}>
-            <Route path="/" component={LoginRegister}/>
+            <Route path="/" component={Home}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/register" component={Register}/>
         </Router>
     </Provider>, document.getElementById('app'));
 

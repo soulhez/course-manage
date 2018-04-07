@@ -38,11 +38,10 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
 *{
     margin:0;
     padding:0;
-    font-family: "微软雅黑 Light";
+    font-family: "AR PL UKai CN","Noto Sans CJK JP Bold";
 }
 
 .logo {
-    font-family: "AR PL UKai CN","Noto Sans CJK JP Bold";
     position: absolute;
     margin-top: 80px;
     margin-left: 40%;
@@ -61,7 +60,7 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
 
 .login-container .login-putin{
     width:400px;
-    height: 300px;
+    height: 360px;
     position:absolute;
     left:50%;
     margin-left: -200px;

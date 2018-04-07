@@ -1,11 +1,10 @@
 import React, {Component} from "react";
+import Nav from "../containers/nav-container";
 
 class Home extends Component{
     render(){
         return <div>
-            <h1 className="style">
-                这是首页
-            </h1>
+          <Nav/>
         </div>
     }
 }

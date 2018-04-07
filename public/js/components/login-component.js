@@ -8,16 +8,6 @@ class Login extends Component {
                 西安邮电大学
             </div>
             <div className="login-putin" classID="isLogin">
-                <div className="tabs">
-                    <ul classID="selectTab">
-                        <li className="tab_style">
-                            <span classID="login">登录</span>
-                        </li>
-                        <li className="tab_style">
-                            <span classID="register">注册</span>
-                        </li>
-                    </ul>
-                </div>
                 <div className="tab-body">
                     <div className="input-container">
                         <input type="text" id="username" className="input-style " placeholder="用户名"/>
