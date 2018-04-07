@@ -4,13 +4,15 @@ let db = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
     password: '111111',
-    database: 'users',
+    database: 'course',
+    connectionLimit: 15,
+    queueLimit: 30,
+    acquireTimeout: 1000000,
     port: 3306
 });
 
 db.connect(function (err) {
     if (err) {
-        console.log("err" + err.stack);
         return;
     }
 });

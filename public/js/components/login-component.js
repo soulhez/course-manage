@@ -1,7 +1,31 @@
 import React, {Component} from "react";
 import Nav from "../containers/nav-container";
+import {Link, browserHistory} from 'react-router';
 
 class Login extends Component {
+    submitLogin(){
+        let userName=$("#username").val();
+        let passWord=$("#password").val();
+        let identity=$("input[type='radio']:checked").val();
+
+        if(userName === ""){
+           alert("用户名不能为空");
+        }else if(passWord === ""){
+           alert("密码不能为空");
+        }else if(identity === ""){
+            alert("请选择登录身份");
+        }else{
+            this.props.onJudge({userName,passWord,identity});
+        }
+    }
+
+    componentDidUpdate(){
+        var isRight=this.props.isRight;
+       if(isRight === "1"){
+            browserHistory.push('/');
+        }
+    }
+
 
     render() {
         return <div>
@@ -15,11 +39,11 @@ class Login extends Component {
                         <div className="input-container">
                             <input type="password" id="password" placeholder="密码" className="input-style"/>
                         </div>
-                        <form className="identity">
-                            <input type="radio" value="学生" name="identity"/><span className="radio-position">学生</span>
-                            <input type="radio" value="教师" name="identity"/><span className="radio-position">教师</span>
+                        <form className="identity-style">
+                            <input type="radio" value="S" name="identity"/><span className="radio-position">学生</span>
+                            <input type="radio" value="T" name="identity"/><span className="radio-position">教师</span>
                         </form>
-                        <input type="submit" value="登录" className="submit-button"/>
+                        <input type="submit" value="登录" className="submit-button" onClick={this.submitLogin.bind(this)}/>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "export NODE_ENV=test && mocha spec/**/*test.js",
+    "test": "export NODE_ENV=test && mocha test/**/*test.js",
     "start": "export NODE_ENV=development && nodemon server.js",
     "webpack": "webpack -d --watch",
     "wpw": "webpack -w",
@@ -47,8 +47,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "istanbul": "^1.0.0-alpha.2",
-    "mocha": "^3.5.0",
-    "mysql": "^2.14.1",
+    "mocha": "^3.0.2",
     "nodemon": "^1.10.0",
     "style-loader": "^0.13.1",
     "supertest": "^2.0.0",

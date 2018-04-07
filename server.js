@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
+const login=require('./server/routers/login-router');
 
 app.use(express.static('public'));
 
@@ -16,6 +17,8 @@ app.get('*', (req, res) => {
     "use strict";
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
+
+app.use('/',login);
 
 
 

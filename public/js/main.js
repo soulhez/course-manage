@@ -2,14 +2,16 @@ import React from 'react';
 import {render} from "react-dom";
 import {Provider} from "react-redux";
 import {Router, Route, browserHistory} from 'react-router';
+
 import Login from "./containers/login-container"
 import Register from "./containers/register-contaienr";
-import Home from "./containers/home"
+import Home from "./containers/home";
+import LoginMiddleware from "./middlewares/login-middleware";
 import {createStore, applyMiddleware} from 'redux';
 import reducer from "./reducers/index"
 
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(LoginMiddleware)(createStore);
 
 const store = createStoreWithMiddleware(reducer);
 

@@ -112,7 +112,7 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
     box-shadow: 0 0 5px #b4a078 !important;
 }
 
-.identity {
+.identity-style {
     margin-left: 120px;
     margin-top:-10px;
     margin-bottom: 15px;
