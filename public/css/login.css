@@ -55,7 +55,6 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
     bottom: 0;
     top: 0;
     overflow: hidden;
-    background: url("../images/background.jpg");
 }
 
 .login-container .login-putin{

@@ -1,10 +1,10 @@
 import React, {Component} from "react";
+import Nav from "../containers/nav-container";
+
  class Register extends Component{
      render(){
          return  <div className="login-container">
-             <div className="logo">
-                 西安邮电大学
-             </div>
+             <Nav/>
              <div className="login-putin" classID="isLogin">
                  <div className="tab-body">
                      <div className="input-container">
