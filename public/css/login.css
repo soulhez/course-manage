@@ -1,3 +1,40 @@
+
+/*
+登录注册标签页
+*/
+li{
+    display: list-item;
+    list-style: none;
+}
+
+.tabs li.tab_style{
+    color:#999;
+    border-bottom: 3px solid #999;
+}
+
+
+.tabs li {
+    float: left;
+    width: 50%;
+    height: 32px;
+    margin-bottom: -2px;
+    text-align: center;
+    font-size: 16px;
+}
+
+li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
+    text-decoration: none;
+    border-bottom: 3px solid #b4a078;
+    color: #b4a078!important;
+    cursor: pointer;
+}
+
+
+
+/*
+登录注册页面框架
+*/
+
 *{
     margin:0;
     padding:0;
@@ -10,7 +47,7 @@
     margin-top: 80px;
     margin-left: 40%;
     font-size: 45px;
-    color: #51cc73;
+    color: #b4a078;
 }
 .login-container {
     position: absolute;
@@ -19,7 +56,7 @@
     bottom: 0;
     top: 0;
     overflow: hidden;
-    background: url('./static/image/background.jpg');
+    background: url("../images/background.jpg");
 }
 
 .login-container .login-putin{
@@ -30,10 +67,14 @@
     margin-left: -200px;
     top:50%;
     margin-top:-100px;
-    padding:50px 20px;
+    padding:20px 20px;
     box-shadow: 3px 7px 21px rgba(0,0,0,3);
     border-radius:5px;
     background: white;
+}
+
+.tab-body{
+    margin-top:50px
 }
 
 .input-container{
@@ -44,8 +85,8 @@
 
 .submit-button{
     margin-left:50px;
-    background: #51cc73;
-    border-color: #51cc73;
+    background: #b4a078;
+    border-color: #b4a078;
     width:260px;
     height: 40px;
     color:white;
@@ -68,9 +109,9 @@
 }
 
 .input-style:focus{
-    border-color: #35b558 !important;
-    -webkit-box-shadow: 0 0 5px #51cc73 !important;
-    box-shadow: 0 0 5px #51cc73 !important;
+    border-color: #b4a078 !important;
+    -webkit-box-shadow: 0 0 5px #b4a078 !important;
+    box-shadow: 0 0 5px #b4a078 !important;
 }
 
 .identity {
