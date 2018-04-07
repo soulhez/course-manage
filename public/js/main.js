@@ -2,9 +2,9 @@ import React from 'react';
 import {render} from "react-dom";
 import {Provider} from "react-redux";
 import {Router, Route, browserHistory} from 'react-router';
-import Home from "./container/home"
+import Home from "./containers/home"
 import {createStore, applyMiddleware} from 'redux';
-import reducer from "./reducer/index"
+import reducer from "./reducers/index"
 
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);

@@ -4,7 +4,7 @@ var webpack = require("webpack");
 module.exports = {
     entry: {
         vendor: ["react", "react-dom", "./node_modules/bootstrap/dist/css/bootstrap.css"],
-        index: ["./public/js/main.js", "./public/style/index.css"]
+        index: ["./public/js/main.js", "./public/css/index.css"]
     },
     output: {
         path: require('path').resolve("./public/dist"),
