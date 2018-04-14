@@ -94,8 +94,7 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
 
 .warning-tip{
     margin-left: 50px;
-    font-size: 15px;
-    color: red;
+     color:red
 }
 
 .input-container{
@@ -123,7 +122,7 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
     -moz-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.input-style:hover{
+/*.input-style:hover{
     border-color: #cccccc;
     -webkit-box-shadow: 0 0 5px #ffffff;
     box-shadow: 0 0 5px #ffffff;
@@ -133,7 +132,7 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
     border-color: #b4a078 !important;
     -webkit-box-shadow: 0 0 5px #b4a078 !important;
     box-shadow: 0 0 5px #b4a078 !important;
-}
+}*/
 
 .identity-style {
     margin-left: 120px;
@@ -156,4 +155,13 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
      margin-left: 130px;
     font-size: 20px;
     margin-bottom: 10px;
+}
+
+input:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+input[type=text]:focus{
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+    box-shadow: 0 0 5px rgba(44,151,22,0.2);
 }

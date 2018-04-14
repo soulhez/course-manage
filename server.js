@@ -1,41 +1,44 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
+const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
 const app = express();
-const session = require('express-session');
+const session = require("express-session");
 const cookieParser = require("cookie-parser");
-const login=require('./server/routers/login-router');
+
+
+const login=require("./server/routers/login-router");
+const register=require("./server/routers/register-router");
 
 
 
-
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static('./public'));
+app.use(express.static("./public"));
 
 
 
-app.get('*', (req, res) => {
+app.get("*", (req, res) => {
     "use strict";
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+    res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });
 app.use(cookieParser());
 app.use(session({
-    secret: 'a',
+    secret: "a",
     resave: true,
     saveUninitialized: true
 }));
 
 
-app.use('/',login);
+app.use("/",login);
+app.use("/",register);
 
 
 
 var server = app.listen(3000, () => {
-    console.log('listening at port %s', server.address().port);
+    console.log("listening at port %s", server.address().port);
 });
 
 module.exports = server;

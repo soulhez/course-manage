@@ -19,8 +19,13 @@ class Login extends Component {
         }
     }
 
+    componentWillMount(){
+        $("#username").attr("value",null);
+        $("#password").attr("value",null);
+    }
+
     componentDidUpdate(){
-        var isRight=this.props.isRight;
+        let isRight=this.props.isRight;
         if(isRight === "0"){
             $('input[id=username]').val("");
             $('input[id=username]').focus();
