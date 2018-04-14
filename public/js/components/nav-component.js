@@ -8,7 +8,6 @@ class Nav extends Component {
     }
 
     render() {
-        console.log(this.props.loginUser);
         return <div>
             <div className="tip">
                 <span className="topic">西安邮电大学</span>

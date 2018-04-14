@@ -6,7 +6,6 @@ router.post('/login', (req, res) => {
 
     var information=req.body;
     Login.findUser(information,(result)=>{
-        console.log(result);
         if(result.length === 0) {
             res.send({isTrue: "0"}); //用户名不存在
         }else if(information.passWord !== result[0].password){
@@ -24,7 +23,6 @@ router.post('/login', (req, res) => {
             if(Cookie.user !== req.session.loginUser){
                 res.cookie('user',req.session.loginUser,'path=/');
             }
-            console.log(req.session);
             res.send({isTrue:"1",user:req.session.loginUser});
         }
     })

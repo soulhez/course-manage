@@ -7,7 +7,6 @@ export default store => next => action =>{
                 passWord:action.data.passWord,
             identity:action.data.identity})
             .end((err,res)=>{
-                console.log("res+++"+res.body);
                 next({type:"LOGIN_CHECK",judge:res.body});
             })
     }else{
