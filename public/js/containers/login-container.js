@@ -4,6 +4,7 @@ import Login from "../components/login-component";
 const mapStateToProps = (state)=> {
     return {
         isRight:state.login.judge,
+        loginUser:state.login.loginUser
     }
 };
 const mapDispatchToProps = (dispatch) => {

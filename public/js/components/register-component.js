@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Nav from "../containers/nav-container";
 
 class Register extends Component {
+
     render() {
         return <div>
             <Nav/>

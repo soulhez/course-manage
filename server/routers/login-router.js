@@ -14,7 +14,7 @@ router.post('/login', (req, res) => {
         }else if(information.identity !== result[0].identity){
             res.send({isTrue:"-2"});// 身份错误
         } else{
-            req.session.loginUser = result[0].userName;
+            req.session.loginUser = result[0].name;
             req.session.isLogin = true;
             var Cookie = {};
             req.headers.cookie && req.headers.cookie.split(';').forEach((cookie)=>{
@@ -24,6 +24,7 @@ router.post('/login', (req, res) => {
             if(Cookie.user !== req.session.loginUser){
                 res.cookie('user',req.session.loginUser,'path=/');
             }
+            console.log(req.session);
             res.send({isTrue:"1",user:req.session.loginUser});
         }
     })
