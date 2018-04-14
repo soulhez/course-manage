@@ -59,20 +59,37 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
 
 .login-container .login-putin{
     width:400px;
-    height: 360px;
+    height: 380px;
     position:absolute;
-    left:50%;
-    margin-left: -200px;
+    left:60%;
+    margin-left: -0px;
     top:50%;
     margin-top:-100px;
-    padding:20px 20px;
+    padding:0px 20px;
     box-shadow: 3px 7px 21px rgba(0,0,0,3);
     border-radius:5px;
     background: white;
 }
 
+
+/*
+.login-container .login-putin{
+    width:400px;
+    height: 300px;
+    position:absolute;
+    left:50%;
+    margin-left: -200px;
+    top:50%;
+    margin-top:-150px;
+    padding:50px 20px;
+    box-shadow: 3px 7px 21px rgba(0,0,0,3);
+    border-radius:5px;
+    background: white;
+}
+*/
+
 .tab-body{
-    margin-top:50px
+    margin-top:25px
 }
 
 .input-container{
@@ -121,4 +138,16 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
 .radio-position{
     display: inline-block;
     margin-right: 25px;
+}
+
+.jump-tip{
+    margin-left: 80px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.login-tip{
+     margin-left: 130px;
+    font-size: 20px;
+    margin-bottom: 10px;
 }

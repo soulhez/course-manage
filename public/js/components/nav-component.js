@@ -2,13 +2,9 @@ import React, {Component} from "react";
 import {Link, browserHistory} from 'react-router';
 
 class Nav extends Component {
-    login(){
-        browserHistory.push("/login");
-    }
 
-    register(){
-        console.log("register");
-        browserHistory.push("/register");
+    goHome(){
+        browserHistory.push('/');
     }
 
     render() {
@@ -16,16 +12,16 @@ class Nav extends Component {
             <div className="tip">
                 <span className="topic">西安邮电大学</span>
                 <div id="userInformation">
-                    <span className="login" onClick={this.login.bind(this)}>登录</span>
-                    <span onClick={this.register.bind(this)}>注册</span>
+                    <span onClick={this.goHome.bind(this)} className="link">首页</span>
                 </div>
-                <div id="userInformation">
-                    <span className="login">登录</span>
-                    <span>登出</span>
-                </div>
+               {/* <div id="userInformation" className = {this.props.loginUser ?'':'hidden'}>
+                    <span className="login">{this.props.loginUser+', 你好！'}</span>
+                   <span onClick={this.logout.bind(this)}>登出</span>
+                </div>*/}
             </div>
             <div className="theme">
-                网络教学平台
+               欢迎访问 <br/>
+                网络教学系统
             </div>
         </div>
     }

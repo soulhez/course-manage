@@ -40,10 +40,11 @@ class Login extends Component {
 
     render() {
         return <div>
-             <Nav/>
+            <Nav/>
             <div className="login-container">
                 <div className="login-putin" classID="isLogin">
                     <div className="tab-body">
+                       <div className="login-tip">用户登录</div>
                         <div className="input-container">
                             <input type="text" id="username" className="input-style " placeholder="用户名"/>
                         </div>
@@ -54,11 +55,15 @@ class Login extends Component {
                             <input type="radio" value="S" name="identity"/><span className="radio-position">学生</span>
                             <input type="radio" value="T" name="identity"/><span className="radio-position">教师</span>
                         </form>
-                        <input type="submit" value="登录" className="submit-button" onClick={this.submitLogin.bind(this)}/>
+                        <input type="submit" value="登录" className="submit-button"
+                               onClick={this.submitLogin.bind(this)}/>
+                        <div className="jump-tip">
+                          还没有帐号？去<a href="/register">注册</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>;
     }
 }
 
