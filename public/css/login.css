@@ -92,6 +92,12 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
     margin-top:25px
 }
 
+.warning-tip{
+    margin-left: 50px;
+    font-size: 15px;
+    color: red;
+}
+
 .input-container{
     margin-left: 50px;
     margin-bottom: 25px;

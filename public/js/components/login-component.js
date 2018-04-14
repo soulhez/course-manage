@@ -9,11 +9,11 @@ class Login extends Component {
         let identity=$("input[type=radio]:checked").val();
 
         if(userName === ""){
-           alert("用户名不能为空");
+            $("#warning").html("用户名不能为空");
         }else if(passWord === ""){
-           alert("密码不能为空");
+            $("#warning").html("密码不能为空");
         }else if(identity === ""){
-            alert("请选择登录身份");
+            $("#warning").html("请选择登录身份");
         }else{
             this.props.onJudge({userName,passWord,identity});
         }
@@ -24,16 +24,16 @@ class Login extends Component {
         if(isRight === "0"){
             $('input[id=username]').val("");
             $('input[id=username]').focus();
-           alert( "用户不存在");
+            $("#warning").html( "用户不存在");
         }else if(isRight === "-1"){
             $('input[id=password]').val("");
             $('input[id=password]').focus();
-            alert("密码错误");
+            $("#warning").html("密码错误");
         }else if(isRight === "-2"){
             $('input[name=identity]').attr("checked",false);
-            alert("身份验证失败");
+            $("#warning").html("身份验证失败");
         }else{
-            browserHistory.push('/home');
+            browserHistory.push('/');
         }
     }
 
@@ -45,6 +45,9 @@ class Login extends Component {
                 <div className="login-putin" classID="isLogin">
                     <div className="tab-body">
                        <div className="login-tip">用户登录</div>
+                        <div>
+                            <span className="warning-tip" id="warning"></span>
+                        </div>
                         <div className="input-container">
                             <input type="text" id="username" className="input-style " placeholder="用户名"/>
                         </div>
