@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 
 const login=require("./server/routers/login-router");
 const register=require("./server/routers/register-router");
+const logout=require("./server/routers/logout-router");
 
 
 
@@ -34,6 +35,7 @@ app.use(session({
 
 app.use("/",login);
 app.use("/",register);
+app.use("/",logout);
 
 
 

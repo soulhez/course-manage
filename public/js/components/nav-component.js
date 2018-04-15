@@ -12,7 +12,7 @@ class Nav extends Component{
 
     logout(){
         this.props.logout();
-        browserHistory.push("/");
+       // browserHistory.push("/");
     }
     render(){
         return <div>
