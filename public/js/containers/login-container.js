@@ -4,8 +4,7 @@ const mapStateToProps = (state)=> {
     console.log(state);
     return {
         isRight:state.login.judge,
-        loginUser:state.login.loginUser,
-        identity:state.login.identity
+        loginUser:state.login.loginUser
     }
 };
 const mapDispatchToProps = (dispatch) => {
