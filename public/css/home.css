@@ -48,6 +48,12 @@ span.tab_style:focus, span.tab_style:hover, span.tab_style:active{
     cursor: pointer;
 }
 
+span.action  {
+    text-decoration: none!important;
+    border-bottom: 4px solid #b4a078!important;
+    color: #b4a078!important;
+}
+
 
 #userInformation{
     font-size: 14px;
