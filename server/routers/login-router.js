@@ -23,7 +23,7 @@ router.post('/login', (req, res) => {
             if(Cookie.user !== req.session.loginUser){
                 res.cookie('user',req.session.loginUser,'path=/');
             }
-            res.send({isTrue:"1",user:req.session.loginUser});
+            res.send({isTrue:"1",user:req.session.loginUser,identity:result[0].identity});
         }
     })
 });
