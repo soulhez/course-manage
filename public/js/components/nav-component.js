@@ -14,6 +14,12 @@ class Nav extends Component{
         this.props.logout();
        // browserHistory.push("/");
     }
+
+    userManage(){
+        document.getElementById("user_manage").style.color = "#b4a078";
+        browserHistory.push("/userManage");
+    }
+
     render(){
         return <div>
             <div className="tip">
@@ -26,6 +32,18 @@ class Nav extends Component{
                     <span className="login">{this.props.loginUser+', 你好！'}</span>
                     <span className="link" onClick={this.logout.bind(this)}>登出</span>
                 </div>
+            </div>
+            <div>
+                <ul className="tabs">
+                    <li><span className="tab_style">首页</span></li>
+                    <li><span className="tab_style">发布信息</span></li>
+                    <li className={this.props.identity === "S" ? 'hidden' : ''}>
+                        <span className="tab_style" onClick={this.userManage.bind(this)} id="user_manage">
+                            用户管理</span></li>
+                    <li className={this.props.identity === "S" ? 'hidden' : ''}>
+                        <span className="tab_style">课程管理</span>
+                    </li>
+                </ul>
             </div>
         </div>
     }
