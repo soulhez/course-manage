@@ -1,37 +1,5 @@
 
 /*
-登录注册标签页
-*/
-li{
-    display: list-item;
-    list-style: none;
-}
-
-.tabs li.tab_style{
-    color:#999;
-    border-bottom: 3px solid #999;
-}
-
-
-.tabs li {
-    float: left;
-    width: 50%;
-    height: 32px;
-    margin-bottom: -2px;
-    text-align: center;
-    font-size: 16px;
-}
-
-li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
-    text-decoration: none;
-    border-bottom: 3px solid #b4a078;
-    color: #b4a078!important;
-    cursor: pointer;
-}
-
-
-
-/*
 登录注册页面框架
 */
 
@@ -48,54 +16,24 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
     font-size: 45px;
     color: #b4a078;
 }
-.login-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    overflow: hidden;
-}
 
 .login-container .login-putin{
     width:400px;
     height: 380px;
     position:absolute;
     left:60%;
-    margin-left: -0px;
     top:50%;
     margin-top:-100px;
-    padding:0px 20px;
+    padding:10px 20px;
     box-shadow: 3px 7px 21px rgba(0,0,0,3);
     border-radius:5px;
     background: white;
 }
-
-
-/*
-.login-container .login-putin{
-    width:400px;
-    height: 300px;
-    position:absolute;
-    left:50%;
-    margin-left: -200px;
-    top:50%;
-    margin-top:-150px;
-    padding:50px 20px;
-    box-shadow: 3px 7px 21px rgba(0,0,0,3);
-    border-radius:5px;
-    background: white;
-}
-*/
 
 .tab-body{
     margin-top:25px
 }
 
-.warning-tip{
-    margin-left: 50px;
-     color:red
-}
 
 .input-container{
     margin-left: 50px;
@@ -122,46 +60,34 @@ li.tab_style:focus, li.tab_style:hover, li.tab_style:active{
     -moz-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-/*.input-style:hover{
-    border-color: #cccccc;
-    -webkit-box-shadow: 0 0 5px #ffffff;
-    box-shadow: 0 0 5px #ffffff;
-}
-
-.input-style:focus{
-    border-color: #b4a078 !important;
-    -webkit-box-shadow: 0 0 5px #b4a078 !important;
-    box-shadow: 0 0 5px #b4a078 !important;
-}*/
-
-.identity-style {
-    margin-left: 120px;
-    margin-top:-10px;
-    margin-bottom: 15px;
-}
-
-.radio-position{
-    display: inline-block;
-    margin-right: 25px;
-}
-
-.jump-tip{
-    margin-left: 80px;
-    font-size: 20px;
-    margin-top: 20px;
-}
-
 .login-tip{
-     margin-left: 130px;
-    font-size: 20px;
+    margin-left: 120px;
+    font-size: 25px;
     margin-bottom: 10px;
+    color:#b4a078 ;
 }
 
-input:-webkit-autofill{
-    -webkit-box-shadow: 0 0 0 1000px white inset;
+.login_input_size{
+    width:250px !important;
+    height: 40px !important;
 }
 
-input[type=text]:focus{
-    -webkit-box-shadow: 0 0 0 1000px white inset;
-    box-shadow: 0 0 5px rgba(44,151,22,0.2);
+.login_identity_style{
+     margin-left: 35%;
+    margin-bottom: 20px;
 }
+
+.login_jump_tip{
+    margin-left: 25%;
+    font-size: 20px;
+}
+
+.theme{
+    text-align: left;
+    font-weight: 300;
+    font-size: 60px;
+    color:#b4a078;
+    margin-top:200px;
+    margin-left: 180px;
+}
+

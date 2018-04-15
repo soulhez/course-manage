@@ -1,6 +1,5 @@
-import {connect} from "react-redux";
 import Login from "../components/login-component";
-
+import {connect} from "react-redux";
 const mapStateToProps = (state)=> {
     return {
         isRight:state.login.judge,
@@ -15,4 +14,3 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 export default connect(mapStateToProps,mapDispatchToProps)(Login);
-

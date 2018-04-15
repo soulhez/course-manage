@@ -1,0 +1,41 @@
+.back{
+    background: url("../images/background.jpg");
+    width: auto;
+    height: 640px;
+}
+
+.register_body{
+    margin: 80px 200px;
+    background: white;
+    width:auto;
+    height: 450px;
+    padding: 15px;
+}
+
+.title_style{
+    font-size: 30px;
+    color:#b4a078;
+    text-align: center;
+    margin:20px auto;
+}
+
+.input_size{
+    width:370px !important;
+    height:40px !important;
+}
+
+.register_input{
+    margin-left: 30%;
+    margin-bottom: 3%;
+}
+
+.jump_tip{
+    margin-left: 40%;
+    font-size: 20px;
+}
+
+
+.identity-style {
+    margin-left: 45%;
+    margin-bottom: 2%;
+}

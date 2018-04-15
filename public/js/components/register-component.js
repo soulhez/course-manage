@@ -4,10 +4,14 @@ import {Link, browserHistory} from 'react-router';
 
 class Register extends Component {
 
+    goHome(){
+        browserHistory.push("/");
+    }
+
     register() {
-        let username = $("#username").val();
-        let password = $("#password").val();
-        let re_password = $("#re_password").val();
+        let username = $("#register_name").val();
+        let password = $("#register_password").val();
+        let re_password = $("#register_re_password").val();
         let identity=$("input[type='radio']:checked").val();
 
         if(username === ""){
@@ -37,37 +41,41 @@ class Register extends Component {
 
 
     render() {
-        return <div>
-            <Nav/>
-            <div className="login-container">
-
-                <div className="login-putin" classID="isLogin">
-                    <div className="tab-body">
-                        <div className="login-tip">
-                            用户注册
-                        </div>
-                        <div>
-                            <span className="warning-tip" id="warning"></span>
-                        </div>
-                        <div className="input-container">
-                            <input type="text" id="username" className="input-style " placeholder="用户名"/>
-                        </div>
-                        <div className="input-container">
-                            <input type="password" id="password" placeholder="密码" className="input-style"/>
-                        </div>
-                        <div className="input-container">
-                            <input type="password" id="re_password" placeholder="确认密码" className="input-style"/>
-                        </div>
-                        <form className="identity-style">
-                            <input type="radio" value="S" name="identity"/><span className="radio-position">学生</span>
-                            <input type="radio" value="T" name="identity"/><span className="radio-position">教师</span>
-                        </form>
-                        <input type="submit" value="注册" className="submit-button" onClick={this.register.bind(this)}/>
-                        <div className="jump-tip">
-                            已有帐号，去<a href="/login">登录</a>
-                        </div>
-                    </div>
+        return <div className="back">
+            <div className="tip">
+                <span className="topic">西安邮电大学</span>
+                <div id="userInformation">
+                    <span className="login link" onClick={this.goHome.bind(this)}>首页</span>
                 </div>
+            </div>
+            <div className="register_body">
+                <form className="form-inline">
+                    <div className="title_style">
+                        用户注册
+                    </div>
+                    <div>
+                        <span className="warning-tip" id="warning"></span>
+                    </div>
+                    <div className="register_input">
+                        <input type="text" className="form-control input_size" id="register_name" placeholder="用户名"/>
+                    </div>
+                    <div className="register_input">
+                        <input type="text" className="form-control input_size" id="register_password" placeholder="密码"/>
+                    </div>
+                    <div className="register_input">
+                        <input type="text" className="form-control input_size" id="register_re_password" placeholder="确认密码"/>
+                    </div>
+                    <form className="identity-style">
+                        <input type="radio" value="S" name="login_identity"/><span className="radio-position">学生</span>
+                        <input type="radio" value="T" name="login_identity"/><span className="radio-position">教师</span>
+                    </form>
+                    <div className="register_input">
+                        <input type="text" className="form-control input_size btn btn-info" id="login_password" value="注册"/>
+                    </div>
+                    <div className="jump_tip">
+                        已有帐号，去<a href="/login">登录</a>
+                    </div>
+                </form>
             </div>
         </div>
     }

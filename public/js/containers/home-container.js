@@ -1,5 +1,5 @@
-import Nav from "../components/nav-component";
 import {connect} from "react-redux";
+import Home from "../components/home-component";
 
 const mapStateToProps = (state)=> {
     return {
@@ -8,9 +8,8 @@ const mapStateToProps = (state)=> {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-       logout:()=>{
-          dispatch({type:"LOGOUT"});
-       }
+
     }
 };
-export default connect(mapStateToProps,mapDispatchToProps)(Nav);
+export default connect(mapStateToProps,mapDispatchToProps)(Home);
+

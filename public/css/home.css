@@ -1,0 +1,91 @@
+.header_position{
+    text-align: center;
+}
+
+
+.input_position{
+    margin-left: 25%;
+    margin-bottom: 4%;
+}
+
+
+.radio-position{
+    display: inline-block;
+    margin-right: 25px;
+}
+
+.button_position{
+    margin-right: 20px;
+}
+
+.warning-tip{
+    margin-left:45%;
+    color:red
+}
+
+/*功能跳转标签页
+   样式表
+*/
+
+.tabs{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.tabs li {
+    display:inline;
+    list-style: none;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 700;
+    margin: 10%;
+}
+
+span.tab_style:focus, span.tab_style:hover, span.tab_style:active{
+    text-decoration: none;
+    border-bottom: 3px solid #b4a078;
+    color: #b4a078!important;
+    cursor: pointer;
+}
+
+
+#userInformation{
+    font-size: 14px;
+    line-height: 40px;
+    float:right;
+    padding-right: 50px;
+    color: white;
+}
+.logoName{
+    text-align: center;
+    font-size: 30px;
+    line-height: 50px;
+    color:#b4a078;
+    font-weight: 900;
+}
+
+.tip{
+    background-color: #333;
+    height:40px;
+}
+
+.topic{
+    font-size: 14px;
+    line-height: 40px;
+    float:left;
+    padding-left: 50px;
+    color: white;
+}
+
+
+
+.login{
+    margin-right: 20px;
+}
+
+
+.link{
+    cursor: pointer;
+}
+
+

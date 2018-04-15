@@ -1,11 +1,15 @@
 import React, {Component} from "react";
-import Nav from "../containers/nav-container";
 import {Link, browserHistory} from 'react-router';
 
 class Login extends Component {
+
+    goHome(){
+        browserHistory.push("/");
+    }
+
     submitLogin(){
-        let userName=$("#username").val();
-        let passWord=$("#password").val();
+        let userName=$("#login_name").val();
+        let passWord=$("#login_password").val();
         let identity=$("input[type=radio]:checked").val();
 
         if(userName === ""){
@@ -45,7 +49,12 @@ class Login extends Component {
 
     render() {
         return <div>
-            <Nav/>
+            <div className="tip">
+                <span className="topic">西安邮电大学</span>
+                <div id="userInformation">
+                    <span className="login link" onClick={this.goHome.bind(this)}>首页</span>
+                </div>
+            </div>
             <div className="login-container">
                 <div className="login-putin" classID="isLogin">
                     <div className="tab-body">
@@ -53,23 +62,31 @@ class Login extends Component {
                         <div>
                             <span className="warning-tip" id="warning"></span>
                         </div>
-                        <div className="input-container">
-                            <input type="text" id="username" className="input-style " placeholder="用户名"/>
-                        </div>
-                        <div className="input-container">
-                            <input type="password" id="password" placeholder="密码" className="input-style"/>
-                        </div>
-                        <form className="identity-style">
-                            <input type="radio" value="S" name="identity"/><span className="radio-position">学生</span>
-                            <input type="radio" value="T" name="identity"/><span className="radio-position">教师</span>
+                        <form className="form-inline">
+                            <div className="input-container">
+                                <input type="text" className="form-control login_input_size" id="login_name" placeholder="用户名"/>
+                            </div>
+                            <div className="input-container">
+                                <input type="text" className="form-control login_input_size" id="login_password" placeholder="密码"/>
+                            </div>
+                            <form className="login_identity_style">
+                                <input type="radio" value="S" name="identity"/><span className="radio-position">学生</span>
+                                <input type="radio" value="T" name="identity"/><span className="radio-position">教师</span>
+                            </form>
+                            <div className="input-container">
+                                <input type="text" className="form-control login_input_size btn btn-info" id="login_password" value="登录"
+                                onClick={this.submitLogin.bind(this)}/>
+                            </div>
                         </form>
-                        <input type="submit" value="登录" className="submit-button"
-                               onClick={this.submitLogin.bind(this)}/>
-                        <div className="jump-tip">
+                        <div className="login_jump_tip">
                           还没有帐号？去<a href="/register">注册</a>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="theme">
+                欢迎访问 <br/>
+                网络教学系统
             </div>
         </div>;
     }
