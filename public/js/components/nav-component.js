@@ -46,8 +46,8 @@ class Nav extends Component{
                     </div>
                     </li>
                     <li className={this.props.identity === "S" ? 'hidden' : ''}>
-                        <div className="nav_group_item">
-                        <span>用户管理</span>
+                        <div className="nav_group_item" id="user_manage">
+                        <span onClick={this.userManage.bind(this)}>用户管理</span>
                         <span className="glyphicon glyphicon-chevron-right"></span>
                             </div>
                     </li>
@@ -59,6 +59,7 @@ class Nav extends Component{
                     </li>
                 </ul>
             </div>
+            <div className="table_position"></div>  {/*为了消除左侧导航栏对右侧内容的影响*/}
         </div>
     }
 }

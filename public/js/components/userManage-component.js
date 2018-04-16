@@ -5,7 +5,10 @@ class UserManage extends Component{
 
     render(){
         return <div>
-            <Nav/>
+                <Nav/>
+            <div className="display_type table_position">
+
+            </div>
         </div>
     }
 }
