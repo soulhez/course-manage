@@ -1,0 +1,75 @@
+#userInformation{
+    font-size: 14px;
+    line-height: 40px;
+    float:right;
+    padding-right: 50px;
+    color: white;
+}
+.logoName{
+    text-align: center;
+    font-size: 30px;
+    line-height: 50px;
+    color:#b4a078;
+    font-weight: 900;
+}
+
+.tip{
+    background-color: #333;
+    height:40px;
+}
+
+.topic{
+    font-size: 14px;
+    line-height: 40px;
+    float:left;
+    padding-left: 50px;
+    color: white;
+}
+
+
+
+.login{
+    margin-right: 20px;
+}
+
+
+.link{
+    cursor: pointer;
+}
+
+/*左侧导航样式*/
+
+.nav_group{
+    margin-top:50px;
+    padding: 10px;
+    margin-bottom: 20px;
+    width:300px;
+}
+
+.nav_group_item{
+    font-size:20px;
+    position: relative;
+    display: inline-block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav_position{
+   display: inline-block;
+}
+
+.nav_group li {
+    list-style: none;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 700;
+    margin: 10%;
+}
+
+div.nav_group_item:focus, div.nav_group_item:hover, div.nav_group_item:active{
+    text-decoration: none;
+    color: #b4a078!important;
+    cursor: pointer;
+}

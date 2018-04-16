@@ -33,15 +33,29 @@ class Nav extends Component{
                     <span className="link" onClick={this.logout.bind(this)}>登出</span>
                 </div>
             </div>
-            <div>
-                <ul className="tabs">
-                    <li><span className="tab_style">首页</span></li>
-                    <li><span className="tab_style">发布信息</span></li>
+            <div className="nav_position">
+                <ul className="nav_group">
+                    <li><div className="nav_group_item">
+                        <span >系统首页</span>
+                    <span className="glyphicon glyphicon-chevron-right"></span>
+                    </div>
+                    </li>
+                    <li><div className="nav_group_item">
+                        <span>发布信息</span>
+                        <span className="glyphicon glyphicon-chevron-right"></span>
+                    </div>
+                    </li>
                     <li className={this.props.identity === "S" ? 'hidden' : ''}>
-                        <span className="tab_style" onClick={this.userManage.bind(this)} id="user_manage">
-                            用户管理</span></li>
+                        <div className="nav_group_item">
+                        <span>用户管理</span>
+                        <span className="glyphicon glyphicon-chevron-right"></span>
+                            </div>
+                    </li>
                     <li className={this.props.identity === "S" ? 'hidden' : ''}>
-                        <span className="tab_style">课程管理</span>
+                        <div className="nav_group_item">
+                            <span>课程管理</span>
+                            <span className="glyphicon glyphicon-chevron-right"></span>
+                        </div>
                     </li>
                 </ul>
             </div>
