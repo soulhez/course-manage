@@ -13,7 +13,6 @@ class Register extends Component {
         let password = $("#register_password").val();
         let re_password = $("#register_re_password").val();
         let identity=$("input[type='radio']:checked").val();
-
         if(username === ""){
             $("#warning").html("请输入用户名！");
         }else if(password === ""){
@@ -49,7 +48,7 @@ class Register extends Component {
                 </div>
             </div>
             <div className="register_body">
-                <form className="form-inline">
+                <div className="form-inline">
                     <div className="title_style">
                         用户注册
                     </div>
@@ -65,17 +64,17 @@ class Register extends Component {
                     <div className="register_input">
                         <input type="text" className="form-control input_size" id="register_re_password" placeholder="确认密码"/>
                     </div>
-                    <form className="identity-style">
+                    <div className="identity-style">
                         <input type="radio" value="S" name="login_identity"/><span className="radio-position">学生</span>
                         <input type="radio" value="T" name="login_identity"/><span className="radio-position">教师</span>
-                    </form>
+                    </div>
                     <div className="register_input">
-                        <input type="text" className="form-control input_size btn btn-info" id="login_password" value="注册"/>
+                        <input type="text" className="form-control input_size btn btn-info" id="login_password" value="注册" onClick={this.register.bind(this)}/>
                     </div>
                     <div className="jump_tip">
                         已有帐号，去<a href="/login">登录</a>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     }

@@ -62,22 +62,22 @@ class Login extends Component {
                         <div>
                             <span className="warning-tip" id="warning"></span>
                         </div>
-                        <form className="form-inline">
+                        <div className="form-inline">
                             <div className="input-container">
                                 <input type="text" className="form-control login_input_size" id="login_name" placeholder="用户名"/>
                             </div>
                             <div className="input-container">
                                 <input type="text" className="form-control login_input_size" id="login_password" placeholder="密码"/>
                             </div>
-                            <form className="login_identity_style">
+                            <div className="login_identity_style">
                                 <input type="radio" value="S" name="identity"/><span className="radio-position">学生</span>
                                 <input type="radio" value="T" name="identity"/><span className="radio-position">教师</span>
-                            </form>
+                            </div>
                             <div className="input-container">
                                 <input type="text" className="form-control login_input_size btn btn-info" id="login_password" value="登录"
                                 onClick={this.submitLogin.bind(this)}/>
                             </div>
-                        </form>
+                        </div>
                         <div className="login_jump_tip">
                           还没有帐号？去<a href="/register">注册</a>
                         </div>

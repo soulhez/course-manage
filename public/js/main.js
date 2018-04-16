@@ -7,14 +7,18 @@ import Home from "./containers/home-container"
 import Register from "./containers/register-contaienr";
 import Login from "./containers/login-container";
 import UserManage from "./containers/userManage-container";
+
 import LoginMiddleware from "./middlewares/login-middleware";
 import RegisterMiddleware from "./middlewares/register-middleware";
 import NavMiddleware from "./middlewares/nav-middleware"
+import UserManageMiddleware from "./middlewares/userManage-middleware"
+
 import {createStore, applyMiddleware} from 'redux';
 import reducer from "./reducers/index"
 
 
-const createStoreWithMiddleware = applyMiddleware(LoginMiddleware, RegisterMiddleware, NavMiddleware)(createStore);
+const createStoreWithMiddleware = applyMiddleware(LoginMiddleware, RegisterMiddleware,
+    NavMiddleware,UserManageMiddleware)(createStore);
 
 const store = createStoreWithMiddleware(reducer);
 
