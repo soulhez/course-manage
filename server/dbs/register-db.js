@@ -1,13 +1,13 @@
 const connection = require('../helps/get-urls');
 
-let insertUser=(information,callback)=>{
-    const sql = `INSERT INTO user(name,password,identity)VALUES('${information.username}','${information.password}','T');`;
+let insertUser=(information,res)=>{
+    const sql = `INSERT INTO user(name,password,identity)VALUES('${information.username}','${information.password}','${information.identity}');`;
     connection.query(sql,(err,result)=>{
         if(err){
-            throw err;
+           res.json(false);
         }
         else{
-            callback(result);
+           res.json(true);
         }
     })
 };

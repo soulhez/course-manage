@@ -2,17 +2,19 @@ import React, {Component} from "react";
 import Nav from "../containers/nav-container"
 
 class UserManage extends Component {
-    componentDidMount() {
+    componentWillMount() {
         this.props.getAllUsers();
+    }
+
+    removeUser(user_id){
+        this.props.onRemove({id:user_id});
     }
 
     componentDidUpdate(){
         console.log(this.props.allUsers);
+        this.props.getAllUsers();
     }
 
-    remove(){
-        this.props.onRemove();
-    }
 
     render() {
         return <div>
@@ -40,7 +42,7 @@ class UserManage extends Component {
                                     </td>
                                 <td>{element.identity}</td>
                                 <td>
-                                    <span className="glyphicon glyphicon-remove remove_color" onClick={this.remove.bind(this)}></span>
+                                    <span className="glyphicon glyphicon-remove remove_color" onClick={this.removeUser.bind(this,element.id)}></span>
                                 </td>
                             </tr>
                         })}
