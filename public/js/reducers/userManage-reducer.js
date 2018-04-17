@@ -1,7 +1,8 @@
 module.exports = ((state = {allUsers: []}, action)=> {
     switch (action.type) {
         case "USERS_QUERY_CHECK": {
-            return ({allUsers: action.allUsers.users});
+            state.allUsers = action.allUsers.users;
+            return Object.assign({}, state);
         }
         default:
             return state;
