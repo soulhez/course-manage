@@ -19,34 +19,6 @@ class UserManage extends Component {
         this.props.onRemove({id:user_id});
     }
 
-    /*modifyUser(user_id,password){
-
-        let style=`glyphicon glyphicon-pencil modify_color`;
-        console.log($(`input[id=user_id]`).val());
-        $(`input[id=user_id]`).removeAttr("disabled");
-        $(`input[id=user_id]`).addClass("border_style");
-        $('tr span:nth-child(2)').attr("class","hidden_flag");
-        $('tr span:nth-child(3)').attr("class","glyphicon glyphicon-remove remove_color");
-        $('tr span:nth-child(4)').attr("class","glyphicon glyphicon-ok right_color");
-        $('tr span:nth-child(3)').on("click",()=>{
-            //取消修改
-            console.log('cancel');
-            $(`input[id=user_id]`).attr("class","remove_border");
-            $(`input[id=user_id]`).attr("disabled","disabled");
-            $(`input[id=user_id]`).attr("value",`${password}`);
-        });
-        $('tr span:nth-child(4)').on("click",()=>{
-             //提交修改
-            let new_password= $(`input[id=user_id]`).val();
-            console.log(new_password);
-           // this.props.onModifyUser({password});
-        });
-
-       // $(this).hasClass(`${style}`).siblings(`.${style}`).removeClass(`${style}`);
-        // $(this).siblings(`.${style}`).removeClass(`${style}`);
-
-    }*/
-
     componentDidUpdate(){
         this.props.getAllUsers();
     }
@@ -84,10 +56,6 @@ class UserManage extends Component {
                                 <td>{element.id}</td>
                                 <td>{element.name}</td>
                                 <td>
-                                  {/* <input type="text" value={element.password} className="remove_border" id={element.id}/>
-                                    <span className="glyphicon glyphicon-pencil modify_color" onClick={this.modifyUser.bind(this,element.id)} id={element.id}></span>
-                                    <span></span>
-                                    <span></span>*/}
                                     {element.password}
                                 </td>
                                 <td>{element.identity}</td>

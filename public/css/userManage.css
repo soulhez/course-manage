@@ -7,10 +7,6 @@
     margin-left: 20%;
 }
 
-.remove_border{
-    border: none;
-    background: none;
-}
 
 .modify_color{
     color: #b4a078;
@@ -22,24 +18,7 @@
     cursor: pointer;
 }
 
-.right_color{
-    color: green;
-    cursor: pointer;
-}
 
 .text_type{
     text-align: center;
-}
-
-.border_style{
-    border: 1px solid #b4a078;
-}
-
-.hidden_flag{
-    color: transparent;
-}
-
-.input_size{
-    width:100%;
-    height: 100%;
 }
