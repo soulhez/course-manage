@@ -13,7 +13,14 @@ export default store => next => action =>{
             .end((err,res) =>{
                next({type:"USER_REMOVE_CHECK",userIsRemove:res.body});
             })
-    } else{
+    } else if(action.type === "USER_MODIFY"){
+        request.post("/modifyUser")
+        .send({user_id:action.data.user_id,
+          password:action.data.password})
+            .end((err,res) =>{
+               next({type:"USER_MODIFY_CHECK",userIsModify:res.body});
+            })
+    }else{
         next(action);
     }
 }

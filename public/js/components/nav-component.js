@@ -12,7 +12,7 @@ class Nav extends Component{
 
     logout(){
         this.props.logout();
-       // browserHistory.push("/");
+        browserHistory.push("/");
     }
 
     userManage(){
@@ -41,7 +41,12 @@ class Nav extends Component{
                     </div>
                     </li>
                     <li><div className="nav_group_item">
-                        <span>发布信息</span>
+                        <span>精品课程</span>
+                        <span className="glyphicon glyphicon-chevron-right"></span>
+                    </div>
+                    </li>
+                    <li><div className="nav_group_item">
+                        <span>尔雅通识</span>
                         <span className="glyphicon glyphicon-chevron-right"></span>
                     </div>
                     </li>

@@ -24,8 +24,21 @@ let removeUser = (user_id,res) =>{
     })
 };
 
+let modifyUser=(information,res) =>{
+    let sql=`update user set password='${information.password}' where id='${information.user_id}'`;
+    connection.query(sql,(err,result)=>{
+        if(err){
+            res.json(false);
+        }
+        else{
+          res.json(true);
+        }
+    })
+};
+
 
 module.exports = {
     findAllUsers,
-    removeUser
+    removeUser,
+    modifyUser
 };

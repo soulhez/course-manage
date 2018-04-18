@@ -11,4 +11,8 @@ router.post("/removeUser", (req, res) => {
   userManage.removeUser(user_id,res);
 });
 
+router.post("/modifyUser",(req,res)=>{
+    userManage.modifyUser(req.body,res)
+});
+
 module.exports=router;
