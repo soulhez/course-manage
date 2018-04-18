@@ -12,12 +12,29 @@
     background: none;
 }
 
-.pencil_color{
-    color: green;
+.modify_color{
+    color: #b4a078;
     cursor: pointer;
 }
 
 .remove_color{
     color: red;
     cursor: pointer;
+}
+
+.right_color{
+    color: green;
+    cursor: pointer;
+}
+
+.text_type{
+    text-align: center;
+}
+
+.border_style{
+    border: 1px solid #b4a078;
+}
+
+.hidden_flag{
+    color: transparent;
 }
