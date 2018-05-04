@@ -8,6 +8,7 @@ import Register from "./containers/register-contaienr";
 import Login from "./containers/login-container";
 import UserManage from "./containers/userManage-container";
 import CourseManage from "./containers/courseManage-container";
+import AddCourse from "./containers/addCourse-container";
 
 import LoginMiddleware from "./middlewares/login-middleware";
 import RegisterMiddleware from "./middlewares/register-middleware";
@@ -27,6 +28,7 @@ render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={Home}/>
+            <Route path="/addCourse" component={AddCourse}/>
             <Route path="/courseManage" component={CourseManage}/>
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
