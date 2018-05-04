@@ -2,6 +2,12 @@ import React, {Component} from "react";
 import {Link,browserHistory} from "react-router";
 
 class Nav extends Component{
+
+    getInitialState(){
+
+    }
+
+
     toLogin(){
         browserHistory.push("/login");
     }
@@ -18,6 +24,11 @@ class Nav extends Component{
     userManage(){
         document.getElementById("user_manage").style.color = "#b4a078";
         browserHistory.push("/userManage");
+    }
+
+    courseManage(){
+        document.getElementById("course_manage").style.color = "#b4a078";
+        browserHistory.push("/courseManage");
     }
 
     render(){
@@ -57,8 +68,8 @@ class Nav extends Component{
                             </div>
                     </li>
                     <li className={this.props.identity === "S" ? 'hidden' : ''}>
-                        <div className="nav_group_item">
-                            <span>课程管理</span>
+                        <div className="nav_group_item" id="course_manage">
+                            <span onClick={this.courseManage.bind(this)}>课程管理</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>

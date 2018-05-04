@@ -7,6 +7,7 @@ import Home from "./containers/home-container"
 import Register from "./containers/register-contaienr";
 import Login from "./containers/login-container";
 import UserManage from "./containers/userManage-container";
+import CourseManage from "./containers/courseManage-container";
 
 import LoginMiddleware from "./middlewares/login-middleware";
 import RegisterMiddleware from "./middlewares/register-middleware";
@@ -18,7 +19,7 @@ import reducer from "./reducers/index"
 
 
 const createStoreWithMiddleware = applyMiddleware(LoginMiddleware, RegisterMiddleware,
-    NavMiddleware,UserManageMiddleware)(createStore);
+    NavMiddleware, UserManageMiddleware)(createStore);
 
 const store = createStoreWithMiddleware(reducer);
 
@@ -26,7 +27,7 @@ render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={Home}/>
-
+            <Route path="/courseManage" component={CourseManage}/>
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
             <Route path="/userManage" component={UserManage}/>
