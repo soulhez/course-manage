@@ -16,7 +16,14 @@ var storage = multer.diskStorage({
 });
 
 const upload = multer({storage: storage});
-app.post('/profile', upload.single('avatar'), (req, res, next)=> {
+app.post('/image', upload.single('avatar'), (req, res, next)=> {
+    res.send({
+        err: null,
+        filePath: 'uploads/' + path.basename(req.file.path)
+    });
+});
+
+app.post('/audio', upload.single('avatar'), (req, res, next)=> {
     res.send({
         err: null,
         filePath: 'uploads/' + path.basename(req.file.path)
@@ -28,6 +35,7 @@ const login=require("./server/routers/login-router");
 const register=require("./server/routers/register-router");
 const logout=require("./server/routers/logout-router");
 const userManage=require("./server/routers/userManage-router");
+const courseManage=require("./server/routers/courseManage-router");
 
 
 
@@ -56,6 +64,7 @@ app.use("/",login);
 app.use("/",register);
 app.use("/",logout);
 app.use("/", userManage);
+app.use("/",courseManage);
 
 
 

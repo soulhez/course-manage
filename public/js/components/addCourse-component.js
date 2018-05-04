@@ -7,47 +7,39 @@ class AddCourse extends Component{
         browserHistory.push("/");
     }
 
-    /*
-
-     publishCourse() {
-     let course_title = $("#course_title").val();
-     let description = $("#course_description").val();
-     let teacher = $("#teacher").val();
-     let course_duration = $("#course_duration").val();
-     let publish_date = $("#publish_date").val();
-     let audio_name = $("#upload_course").val();
-     if (audio_name.length != 0) {
-     var reg = ".*\\.(pdf)";
-     // var reg = ".*\\.(MP3|WMA|WAV|APE|OGG|AAC)";
-     var r = audio_name.match(reg);
-     console.log(r);
-     /!* if (r == null) {
-     alert("对不起，您的图片格式不正确，请重新上传");
-     }*!/
-     }
-     }
-     */
-
     isChange(id){
         let dom=$("#"+id);
         if (dom[0].files && dom[0].files[0]) {
-            console.log("lalal");
             let fileObj = new FileReader();
             fileObj.readAsDataURL(dom[0].files[0]);
         }
 
         let formData = new FormData();
         formData.append('avatar',dom[0].files[0]);
-        request
-            .post('/profile')
-            .send(formData)
-            .end((err,res)=>{
-               this.props.fileUpload(res.body.filePath);
-            })
+        if(id === "course_image"){
+            request
+                .post('/image')
+                .send(formData)
+                .end((err,res)=>{
+                    this.props.imageUpload(res.body.filePath);
+                })
+        }else if(id === "course_audio"){
+            request
+                .post('/audio')
+                .send(formData)
+                .end((err,res)=>{
+                    console.log(res.body.filePath);
+                    this.props.audioUpload(res.body.filePath);
+                })
+        }
     }
 
     goBack(){
         browserHistory.push("/courseManage");
+    }
+
+    componentDidUpdate(){
+
     }
 
     publishCourse(){
@@ -58,8 +50,10 @@ class AddCourse extends Component{
         let publish_date = $("#publish_date").val();
         let course_image = $("#course_image").val();
         let course_audio = $("#course_audio").val();
+        let image_path=this.props.imagePath;
+        let audio_path=this.props.audioPath;
         var image_reg = ".*\\.(jpg|png|gif|JPG|PNG|GIF)";
-        var audio_reg = ".*\\.(MP3|WMA|WAV|APE|OGG|AAC)";
+        var audio_reg = ".*\\.(mp3|mp4|WMA|WAV|APE|OGG|AAC)";
         if(course_title === ""){
             $("#warning").html("课程标题不能为空");
         }else if(course_description === ""){
@@ -73,7 +67,8 @@ class AddCourse extends Component{
         }else if(course_audio.match(audio_reg) == null){
             $("#warning").html("请上传正确格式文件");
         }else{
-
+            this.props.addCourse({course_title,course_description,course_teacher,
+            course_duration,publish_date,image_path,audio_path});
         }
     }
 
