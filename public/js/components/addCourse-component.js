@@ -39,7 +39,14 @@ class AddCourse extends Component{
     }
 
     componentDidUpdate(){
-
+       let isAdd=this.props.isAdd;
+        if(isAdd){
+            alert("添加成功");
+            browserHistory.push("/");
+        }else{
+            alert("添加失败");
+            browserHistory.push("/courseManage");
+        }
     }
 
     publishCourse(){
