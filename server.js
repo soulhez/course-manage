@@ -4,6 +4,24 @@ const bodyParser = require("body-parser");
 const app = express();
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const multer = require('multer');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.resolve('public/uploads'));
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({storage: storage});
+app.post('/profile', upload.single('avatar'), (req, res, next)=> {
+    res.send({
+        err: null,
+        filePath: 'uploads/' + path.basename(req.file.path)
+    });
+});
 
 
 const login=require("./server/routers/login-router");

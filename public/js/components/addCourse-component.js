@@ -38,14 +38,12 @@ class AddCourse extends Component{
 
         let formData = new FormData();
         formData.append('avatar',dom[0].files[0]);
-        console.log(dom[0].files[0]);
-       /* request
+        request
             .post('/profile')
             .send(formData)
             .end((err,res)=>{
-                console.log(res.body.filePath);
-                this.props.fileUpload(res.body.filePath);
-            })*/
+               this.props.fileUpload(res.body.filePath);
+            })
     }
 
     goBack(){
@@ -115,18 +113,18 @@ class AddCourse extends Component{
                         <label className="label_position">发布日期：</label>
                         <input type="date" className="form-control input_size" id="publish_date"/>
                     </div>
-                    <div className="course_input">
+                    <form className="course_input">
                         <label className="label_position">上传图片：</label>
                         <input type="file" className="form-control input_size"
-                               id="course_image"  ref="course_image"
+                               id="course_image"  ref="resume"
                                onChange={this.isChange.bind(this,"course_image")}/>
-                    </div>
-                    <div className="course_input">
+                    </form>
+                    <form className="course_input">
                         <label className="label_position">上传视频：</label>
                         <input type="file" className="form-control input_size"
                                id="course_audio"   ref="course_audio"
                                onChange={this.isChange.bind(this,"course_audio")}/>
-                    </div>
+                    </form>
                     <div className="form-inline button_group">
                         <button className="btn btn-default" style={{"margin-right":"70px"}} onClick={this.goBack.bind(this)}>返回</button>
                         <button className="btn btn-info" onClick={this.publishCourse.bind(this)}>发布</button>
