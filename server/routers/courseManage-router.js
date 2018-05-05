@@ -10,4 +10,8 @@ router.post("/allCourses",(req,res)=>{
     CourseManage.queryCourse(req,res);
 });
 
+router.post("/removeCourse",(req,res) => {
+    CourseManage.removeCourse(req.body.course_id,res);
+});
+
 module.exports=router;

@@ -18,7 +18,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type:"USER_REMOVE",data});
         },
         onModifyUser:(data) =>{
-            console.log(data);
             dispatch({type:"USER_MODIFY",data});
         }
     }

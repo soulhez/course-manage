@@ -26,7 +26,20 @@ let queryCourse=(req,res)=>{
     })
 };
 
+let removeCourse=(course_id,res) =>{
+   let sql=`delete from source where id=${course_id}`;
+    connection.query(sql,(err,result)=>{
+        if(err){
+            res.json(false);
+        }
+        else{
+            res.json(true);
+        }
+    })
+};
+
 module.exports = {
     insertCourse,
-    queryCourse
+    queryCourse,
+    removeCourse
 };

@@ -7,7 +7,14 @@ export default store => next => action =>{
             .end((err,res) =>{
              next({type:"COURSE_QUERY_CHECK",allCourses:res.body});
             })
-    }else{
+    }else if(action.type === "COURSE_REMOVE"){
+        request.post("/removeCourse")
+            .send({course_id:action.course_id})
+            .end((err,res) =>{
+                next({type:"COURSE_REMOVE_CHECK",isRemove:res.body});
+            })
+    }
+    else{
         next(action);
     }
 }

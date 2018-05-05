@@ -1,3 +1,46 @@
-.container_position{
+.container_position {
     margin-top: -7%;
 }
+
+.img_size {
+    width: 250px;
+    height: 250px;
+}
+
+.image_box {
+    text-decoration: none;
+    list-style: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 3% 3%;
+}
+
+
+.course_title{
+    cursor: pointer;
+    text-align: center;
+    height: 80px;
+    width:auto;
+    padding-top: 10px;
+    background: white;
+}
+
+.course_title div{
+    font-weight: 700;
+}
+
+.course_title div:hover {
+    cursor: pointer;
+    color:#b4a078 ;
+    font-weight: 900;
+}
+
+.course_title span:hover {
+    cursor: pointer;
+}
+
+
+.course_title div{
+   margin-top: 10px;
+}
+

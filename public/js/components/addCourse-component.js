@@ -40,12 +40,12 @@ class AddCourse extends Component{
 
     componentDidUpdate(){
        let isAdd=this.props.isAdd;
+        console.log(isAdd);
         if(isAdd){
             alert("添加成功");
             browserHistory.push("/");
-        }else{
+        }else if(isAdd === false){
             alert("添加失败");
-            browserHistory.push("/courseManage");
         }
     }
 

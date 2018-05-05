@@ -3,15 +3,19 @@ import CourseManage from "../components/courseManage-component";
 
 const mapStateToProps = (state) => {
     console.log(state);
-     return {
-       allCourses:state.courseManage.allCourses
-     };
+    return {
+        allCourses: state.courseManage.allCourses,
+        courseIsRemove:state.courseManage.courseIsRemove
+    };
 };
 
-const mapDispatchToProps = (dispatch) =>{
+const mapDispatchToProps = (dispatch) => {
     return {
-        getAllCourse:()=>{
-            dispatch({type:"COURSE_QUERY"});
+        getAllCourse: () => {
+            dispatch({type: "COURSE_QUERY"});
+        },
+        removeCourse: (course_id) => {
+            dispatch({type:"COURSE_REMOVE",course_id});
         }
     };
 };
