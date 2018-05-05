@@ -28,7 +28,6 @@ class AddCourse extends Component{
                 .post('/audio')
                 .send(formData)
                 .end((err,res)=>{
-                    console.log(res.body.filePath);
                     this.props.audioUpload(res.body.filePath);
                 })
         }
@@ -43,7 +42,7 @@ class AddCourse extends Component{
         console.log(isAdd);
         if(isAdd){
             alert("添加成功");
-            browserHistory.push("/");
+            browserHistory.push("/courseManage");
         }else if(isAdd === false){
             alert("添加失败");
         }

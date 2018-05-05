@@ -18,7 +18,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type: 'AUDIO_UPLOAD', audioPath: audio_path});
         },
         addCourse:(data) =>{
-            console.log();
             dispatch({type:"ADD_COURSE",data});
         }
     }
