@@ -3,10 +3,6 @@ import {Link,browserHistory} from "react-router";
 
 class Nav extends Component{
 
-    getInitialState(){
-
-    }
-
 
     toLogin(){
         browserHistory.push("/login");

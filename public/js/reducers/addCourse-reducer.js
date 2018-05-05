@@ -1,5 +1,4 @@
 module.exports = ((state = {imagePath:"",audioPath:"",isAdd:false}, action)=> {
-    console.log(action);
     switch (action.type) {
         case "IMAGE_UPLOAD": {
             state.imagePath = action.imagePath;
