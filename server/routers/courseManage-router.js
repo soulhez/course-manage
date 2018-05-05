@@ -15,4 +15,8 @@ router.post("/removeCourse",(req,res) => {
     CourseManage.removeCourse(req.body.course_id,res);
 });
 
+router.post("/editCourse",(req,res) => {
+    CourseManage.editCourse(req.body.data,res);
+});
+
 module.exports=router;
