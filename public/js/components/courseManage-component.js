@@ -53,6 +53,10 @@ class CourseManage extends Component {
         }
     }
 
+    scanDetail(information){
+            browserHistory.push("/detail");
+    }
+
 
     render() {
         return <div >
@@ -68,7 +72,7 @@ class CourseManage extends Component {
                                  alt={element.title} className="img_size"/>
                             </a>
                             <div className="course_title">
-                                <div>这是教学视频</div>
+                                <div onClick={this.scanDetail.bind(this,element)}>{element.title}</div>
                                 <span className="glyphicon glyphicon-trash"  onClick={this.removeCourse.bind(this,element.id)}
                                       style={{"margin-right":"30px","margin-top":"10px"}}>
                                 </span>
