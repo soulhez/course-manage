@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import Nav from "../containers/nav-container"
+import {Link, browserHistory} from 'react-router';
 
 class Detail extends Component{
     toLogin(){
@@ -13,6 +13,11 @@ class Detail extends Component{
     logout(){
         this.props.logout();
         browserHistory.push("/");
+    }
+
+    componentWillMount() {
+        let information=this.props.location.state;
+        console.log(information);
     }
     render(){
         return <div>

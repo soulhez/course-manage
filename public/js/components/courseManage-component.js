@@ -54,7 +54,11 @@ class CourseManage extends Component {
     }
 
     scanDetail(information){
-            browserHistory.push("/detail");
+        let path = {
+            pathname:'/detail',
+            state:information,
+        };
+            browserHistory.push(path);
     }
 
 
