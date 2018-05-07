@@ -2,6 +2,14 @@ import React,{Component} from "react";
 import {Link, browserHistory} from 'react-router';
 
 class Detail extends Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            info:{}
+        };
+    }
+
     toLogin(){
         browserHistory.push("/login");
     }
@@ -16,8 +24,7 @@ class Detail extends Component{
     }
 
     componentWillMount() {
-        let information=this.props.location.state;
-        console.log(information);
+       this.state.info=this.props.location.state;
     }
     render(){
         return <div>
@@ -34,7 +41,7 @@ class Detail extends Component{
             </div>
             <div>
                 <video width="320" height="240" controls="controls">
-                    <source src="../uploads/1525509454106.mp4" type="video/mp4"/>
+                    <source src={this.state.info.audio_path} type="video/mp4"/>
                 </video>
             </div>
         </div>

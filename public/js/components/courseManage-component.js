@@ -69,10 +69,9 @@ class CourseManage extends Component {
                 <button className="btn btn-default" onClick={this.addCourse.bind(this)}>添加课程资源</button>
                 <div>
                     {this.props.allCourses.map((element,index)=>{
-                        let location=`../${element.image_path}`;
                         return  <li key={index} className="image_box">
                             <a href="http://www.jikexueyuan.com/course/web/" target="_blank">
-                            <img src={location} title={element.title}
+                            <img src={element.image_path} title={element.title}
                                  alt={element.title} className="img_size"/>
                             </a>
                             <div className="course_title">

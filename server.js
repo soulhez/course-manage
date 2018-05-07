@@ -19,14 +19,14 @@ const upload = multer({storage: storage});
 app.post('/image', upload.single('avatar'), (req, res, next)=> {
     res.send({
         err: null,
-        filePath: 'uploads/' + path.basename(req.file.path)
+        filePath: '../uploads/' + path.basename(req.file.path)
     });
 });
 
 app.post('/audio', upload.single('avatar'), (req, res, next)=> {
     res.send({
         err: null,
-        filePath: 'uploads/' + path.basename(req.file.path)
+        filePath: '../uploads/' + path.basename(req.file.path)
     });
 });
 
