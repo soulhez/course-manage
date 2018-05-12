@@ -1,10 +1,10 @@
 
- ul li{
+ul li {
     display: list-item;
     list-style: none;
 }
 
-.tabs li.tab_style{
+.tabs li.tab_style {
     cursor: pointer;
 }
 
@@ -17,12 +17,12 @@
     font-size: 16px;
 }
 
-.course_detail_title{
+.course_detail_title {
     font-size: 25px;
     margin: 5px auto;
 }
 
-.border_style{
+.border_style {
     border-bottom: 3px solid #b4a078;
 }
 
@@ -36,8 +36,32 @@
     background: #b4a078;
     margin-top: 30px;
     font-size: 20px;
+    margin-left: -350px;
 }
 
-button{
-    border:0 none;
+button {
+    border: 0 none;
+}
+
+.column_space {
+    margin-right: 30px;
+}
+
+.row_space {
+    margin: 20px 0;
+}
+
+.content_container {
+    padding-top: 20px;
+    margin-bottom: 50px
+}
+
+.commit_container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid #F5F5F5;
+}
+
+.column_left{
+    margin-left: 30px;
 }

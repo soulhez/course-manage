@@ -24,8 +24,15 @@ router.post("/insertCommit",(req,res) =>{
 });
 
 router.post("/allCommits", (req,res)=> {
-    console.log(req.body);
    CourseManage.queryCommit(req.body.course_id,res);
+});
+
+router.post("/modifyCourse",(req,res)=>{
+    CourseManage.editCourse(req.body,res);
+});
+
+router.post("/courseById",(req,res)=>{
+   CourseManage.queryCourseById(req.body.course_id,res);
 });
 
 module.exports=router;

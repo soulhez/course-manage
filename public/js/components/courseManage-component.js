@@ -79,7 +79,7 @@ class CourseManage extends Component {
                                 <span className="glyphicon glyphicon-trash"  onClick={this.removeCourse.bind(this,element.id)}
                                       style={{"margin-right":"30px","margin-top":"10px"}}>
                                 </span>
-                                <span className="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modifyCourse"
+                                <span className="glyphicon glyphicon-pencil modify_color" data-toggle="modal" data-target="#modifyCourse"
                                 onClick={this.fillData.bind(this,element)}></span>
                             </div>
                         </li>

@@ -15,8 +15,24 @@ export default store => next => action => {
         request.post("/allCommits")
             .send({course_id: action.data})
             .end((req, res)=> {
-                console.log(res.body);
-                next({type:"QUERY_COMMIT_CHECK",commits:res.body.commits});
+                next({type: "QUERY_COMMIT_CHECK", commits: res.body.commits});
+            })
+    } else if (action.type === "MODIFY_COURSE") {
+       request.post("/modifyCourse")
+            .send({
+                id: action.data.id,
+                title: action.data.title,
+                description: action.data.description,
+                teacher: action.data.teacher
+            })
+            .end((req, res)=> {
+                next({type:"MODIFY_COURSE_CHECK",isModify:res.body});
+            })
+    }else if(action.type === "QUERY_COURSE_ByID"){
+        request.post("/courseById")
+            .send({course_id:action.course_id})
+            .end((req,res)=>{
+               next({type:"QUERY_COURSE_ByID_CHECK",course_by_id:res.body.info});
             })
     }
     else {

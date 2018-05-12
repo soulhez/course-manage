@@ -15,6 +15,7 @@ class Detail extends Component {
     componentWillMount() {
         this.state.info = this.props.location.state;
         this.props.allCommits(this.state.info.id);
+        this.props.queryCourseById(this.state.info.id);
     }
 
     courseDetail() {
@@ -43,15 +44,57 @@ class Detail extends Component {
         if(this.props.isInsertCommit === true){
             alert("添加评论成功");
         }
+        this.props.queryCourseById(this.state.info.id);
+        console.log(this.props.course_by_id);
+
+    }
+
+    modifyByTitle(){
+         this.props.modifyTitle();
+    }
+
+    modifyByDescription(){
+          this.props.modifyDescription();
+    }
+
+    modifyByTeacher(){
+        this.props.modifyTeacher();
+    }
+
+    fillData(){
+        let data=this.state.info;
+        $("#course_id").val(data.id);
+        $("#course_id").attr("disabled","disabled");
+        $("#course_title").val(data.title);
+        $("#course_description").val(data.description);
+        $("#course_teacher").val(data.teacher);
+        $("#course_duration").val(data.duration);
+        $("#course_duration").attr("disabled","disabled");
+        $("#publish_date").val(data.publish_date);
+        $("#publish_date").attr("disabled","disabled");
+        $("#image_path").val(data.image_path);
+        $("#image_path").attr("disabled","disabled");
+        $("#audio_path").val(data.audio_path);
+        $("#audio_path").attr("disabled","disabled");
+    }
+
+    modifyCourse(){
+        let id= $("#course_id").val();
+        let title=$("#course_title").val();
+        let description=$("#course_description").val();
+        let teacher=$("#course_teacher").val();
+        if(title != "" && description != "" && teacher !=""){
+            this.props.modifyCourse({id,title,description,teacher});
+        }
     }
 
     render() {
         return <div>
             <Nav/>
             <div className="col-md-7 col-md-offset-3 container_position">
-                <div className="course_detail_title">{this.state.info.title}</div>
+                <div className="course_detail_title">{this.props.course_by_id.title}</div>
                 <video width="100%" height="100%" controls="controls">
-                    <source src={this.state.info.audio_path} type="video/mp4"/>
+                    <source src={this.props.course_by_id.audio_path} type="video/mp4"/>
                 </video>
                 <div>
                     <ul className="tabs">
@@ -60,17 +103,36 @@ class Detail extends Component {
                         <li className="tab_style" onClick={this.courseCommit.bind(this)} id="commit_tab">
                             <strong>我要评论</strong></li>
                     </ul>
-                    <div id="detail" style={{"padding-top": "30px","margin-bottom":"50px"}}>
-                        <div style={{"font-size": "25px", "margin-top": "20px"}}>{this.state.info.title}</div>
-                        <div>
-                            <span style={{"display": "inline_block", "margin-right": "50px"}}>{this.state.info.duration}分钟</span>
-                            <span>{this.state.info.publish_date}</span>
+                    <div id="detail" className="content_container">
+                        <div style={{"font-size": "25px", "margin": "20px 0"}}>{this.props.course_by_id.title}
+                        <span className="glyphicon glyphicon-pencil modify_color column_left"
+                              onClick={this.fillData.bind(this)}
+                              data-toggle="modal" data-target="#modifyCourse"></span>
                         </div>
-                        <div style={{ "margin": "10px 0"}}><strong>课程简介：</strong>{this.state.info.description}</div>
-                        <div style={{ "margin": "10px 0"}}><strong>教师团队：</strong>{this.state.info.teacher}</div>
+                        <div>
+                            <span className="column_space">{this.props.course_by_id.duration}分钟</span>
+                            <span>{this.props.course_by_id.publish_date}</span>
+                        </div>
+                        <div className="row_space"><strong>课程简介：
+                        </strong>{this.props.course_by_id.description}
+                        </div>
+                        <div className="row_space"><strong>教师团队：</strong>
+                            {this.props.course_by_id.teacher}
+                        </div>
                     </div>
-                    <div id="commit" hidden="hidden" style={{"padding-top": "30px","margin-bottom":"50px"}}>
+                    <div id="commit" hidden="hidden" className="content_container">
                        <button className="commit_button" data-toggle="modal" data-target="#publishCommit">发布评论</button>
+                        {this.props.commits.map((element,index)=>{
+                             return <div key={index} className="commit_container">
+                                  <div className="row_space">
+                                      <span className="column_space">{element.user_name}</span>
+                                  <span>{element.commit_date}</span>
+                                  </div>
+                                 <div className="row_space">
+                                     {element.content}
+                                 </div>
+                              </div>
+                        })}
                     </div>
                 </div>
             </div>
@@ -97,6 +159,73 @@ class Detail extends Component {
                             <button type="button" className="btn btn-default" data-dismiss="modal">取消</button>
                             <button type="button" className="btn btn-primary" data-dismiss="modal"
                             onClick={this.publishCommit.bind(this)}>发表</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="modal fade" id="modifyCourse" role="dialog">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 className="modal-title">修改课程信息</h4>
+                        </div>
+                        <div className="modal-body">
+                            <form className="form-horizontal col-md-offset-1">
+                                <div className="form-group">
+                                    <label className="col-md-3 control-label">课程ID：</label>
+                                    <div className="col-md-7">
+                                        <input type="text" className="form-control" id="course_id"/>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-md-3 control-label">课程标题：</label>
+                                    <div className="col-md-7">
+                                        <input type="text" className="form-control" id="course_title"/>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-md-3 control-label">课程描述：</label>
+                                    <div className="col-md-7">
+                                        <input type="text" className="form-control" id="course_description"/>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-md-3 control-label">教师团队：</label>
+                                    <div className="col-md-7">
+                                        <input type="text" className="form-control" id="course_teacher"/>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-md-3 control-label">视频时长：</label>
+                                    <div className="col-md-7">
+                                        <input type="text" className="form-control" id="course_duration"/>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-md-3 control-label">发布日期：</label>
+                                    <div className="col-md-7">
+                                        <input type="text" className="form-control" id="publish_date"/>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-md-3 control-label">图片地址：</label>
+                                    <div className="col-md-7">
+                                        <input type="text" className="form-control" id="image_path"/>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-md-3 control-label">视频地址：</label>
+                                    <div className="col-md-7">
+                                        <input type="text" className="form-control" id="audio_path"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" className="btn btn-primary" data-dismiss="modal"
+                                    onClick={this.modifyCourse.bind(this)}>修改</button>
                         </div>
                     </div>
                 </div>
