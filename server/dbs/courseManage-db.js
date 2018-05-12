@@ -40,7 +40,6 @@ let removeCourse = (course_id, res) => {
 };
 
 let editCourse = (information, res)=> {
-    console.log(information);
    let sql=`update source set title='${information.title}',description='${information.description}',teacher='${information.teacher}' where id=${information.id};`;
     connection.query(sql, (err, result)=> {
         if (err) {
@@ -52,9 +51,23 @@ let editCourse = (information, res)=> {
     })
 };
 
+let insertCommit = (infomation,res) =>{
+    let sql=`insert into commit(content,user_name,course_id)values('${infomation.commit_content}','${infomation.user_name}',${infomation.course_id});`;
+    connection.query(sql, (err, result)=> {
+        if (err) {
+            res.json(false);
+        }
+        else {
+          res.json(true);
+        }
+    })
+};
+
+
 module.exports = {
     insertCourse,
     queryCourse,
     removeCourse,
-    editCourse
+    editCourse,
+    insertCommit
 };

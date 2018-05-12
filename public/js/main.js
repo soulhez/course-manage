@@ -17,13 +17,15 @@ import NavMiddleware from "./middlewares/nav-middleware";
 import UserManageMiddleware from "./middlewares/userManage-middleware";
 import AddCourseMiddleware from "./middlewares/addCourse-middleware";
 import CourseManageMiddleware from "./middlewares/courseManage-middleware";
+import CourseDetailMiddleware from "./middlewares/courseDetail-middleware";
 
 import {createStore, applyMiddleware} from 'redux';
 import reducer from "./reducers/index"
 
 
 const createStoreWithMiddleware = applyMiddleware(LoginMiddleware, RegisterMiddleware,
-    NavMiddleware, UserManageMiddleware, AddCourseMiddleware, CourseManageMiddleware)(createStore);
+    NavMiddleware, UserManageMiddleware, AddCourseMiddleware, CourseManageMiddleware,
+    CourseDetailMiddleware)(createStore);
 
 const store = createStoreWithMiddleware(reducer);
 

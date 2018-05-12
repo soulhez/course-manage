@@ -63,7 +63,7 @@ class CourseManage extends Component {
 
 
     render() {
-        return <div >
+        return <div>
             <Nav/>
             <div className="col-md-9 col-md-offset-2 container_position" style={{"background":"#F5F5F5"}}>
                 <button className="btn btn-default" onClick={this.addCourse.bind(this)}>添加课程资源</button>
@@ -86,7 +86,7 @@ class CourseManage extends Component {
                     })}
                 </div>
             </div>
-            <div className="modal fade" tabindex="-1" id="modifyCourse" role="dialog">
+            <div className="modal fade" id="modifyCourse" role="dialog">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">

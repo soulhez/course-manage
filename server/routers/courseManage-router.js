@@ -19,4 +19,8 @@ router.post("/editCourse",(req,res) => {
     CourseManage.editCourse(req.body.data,res);
 });
 
+router.post("/insertCommit",(req,res) =>{
+    CourseManage.insertCommit(req.body,res);
+});
+
 module.exports=router;
