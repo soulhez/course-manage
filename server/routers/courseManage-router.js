@@ -23,4 +23,9 @@ router.post("/insertCommit",(req,res) =>{
     CourseManage.insertCommit(req.body,res);
 });
 
+router.post("/allCommits", (req,res)=> {
+    console.log(req.body);
+   CourseManage.queryCommit(req.body.course_id,res);
+});
+
 module.exports=router;

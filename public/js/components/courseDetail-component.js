@@ -14,6 +14,7 @@ class Detail extends Component {
 
     componentWillMount() {
         this.state.info = this.props.location.state;
+        this.props.allCommits(this.state.info.id);
     }
 
     courseDetail() {
@@ -21,7 +22,6 @@ class Detail extends Component {
         $("#commit").hide();
         $(`li[id=commit_tab]`).attr("class", "tab_style");
         $(`li[id=detail_tab]`).attr("class", "border_style");
-        console.log(this.props.loginUser);
     }
 
     courseCommit() {

@@ -63,11 +63,23 @@ let insertCommit = (infomation,res) =>{
     })
 };
 
+let queryCommit= (course_id,res) =>{
+  let sql =`select id,content,user_name,course_id,DATE_FORMAT(publish_date,'%Y-%m-%d %H:%i:%S') commit_date from commit where course_id=${course_id};`;
+    connection.query(sql,(err,result)=>{
+        if(err){
+            res.json(false);
+        }else{
+            res.json({commits:result});
+        }
+    });
+};
+
 
 module.exports = {
     insertCourse,
     queryCourse,
     removeCourse,
     editCourse,
-    insertCommit
+    insertCommit,
+    queryCommit
 };
