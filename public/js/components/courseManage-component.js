@@ -7,7 +7,7 @@ class CourseManage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            type:''
+           course_type:"all"
         };
     }
 
@@ -16,25 +16,17 @@ class CourseManage extends Component {
         browserHistory.push("/insertCourse");
     }
 
-   /* componentWillMount() {
-        console.log(this.state);
-       /!* let type=this.props.location.state;
-        if(type === "quality"){
-
-        }else if(type === "chaoxing"){
-
-        }else{*!/
-            this.props.getAllCourse();
-      /!*  }*!/
-
-    }*/
-
     removeCourse(course_id) {
         this.props.removeCourse(course_id);
     }
 
+    componentWillMount() {
+        this.props.getAllCourse(this.state.course_type);
+    }
+
     componentDidUpdate() {
-        this.props.getAllCourse();
+       this.state.course_type=this.props.courseType;
+        this.props.getAllCourse(this.state.course_type);
         if (this.props.courseIsModify) {
             alert("修改成功！");
         }
@@ -78,41 +70,51 @@ class CourseManage extends Component {
         browserHistory.push(path);
     }
 
-    init(type){
-        this.state.type=type;
-        if(type === "quality"){
-
-        }else if(type === "chaoxing"){
-
-        }else{
-           this.props.getAllCourse();
-        }
-    }
-
 
     render() {
         return <div>
-            <Nav course_type={this.init}/>
+            <Nav/>
             <div className="col-md-9 col-md-offset-2 container_position" style={{"background": "#F5F5F5"}}>
                 <span className="glyphicon glyphicon-plus modify_color" onClick={this.addCourse.bind(this)} style={{"margin-left":"90%","margin-top":"10px"}}>添加课程</span>
                 <div>
                     {this.props.allCourses.map((element, index)=> {
-                        return <li key={index} className="image_box">
-                            <a href="/detail" target="_blank">
-                                <img src={element.image_path} title={element.title}
-                                     alt={element.title} className="img_size"/>
-                            </a>
-                            <div className="course_title">
-                                <div onClick={this.scanDetail.bind(this, element)}>{element.title}</div>
-                                <span className="glyphicon glyphicon-trash"
-                                      onClick={this.removeCourse.bind(this, element.id)}
-                                      style={{"margin-right": "30px", "margin-top": "10px"}}>
+                        if( this.state.course_type === "chaoxing"){
+                            return <li key={index} className="image_box">
+                                <a href={element.audio_path} target="_blank">
+                                    <img src={element.image_path} title={element.title}
+                                         alt={element.title} className="img_size"/>
+                                </a>
+                                <div className="course_title">
+                                    <a href={element.audio_path}>{element.title}</a>
+                                    <div></div>
+                                    <span className="glyphicon glyphicon-trash"
+                                          onClick={this.removeCourse.bind(this, element.id)}
+                                          style={{"margin-right": "30px", "margin-top": "10px"}}>
                                 </span>
-                                <span className="glyphicon glyphicon-pencil modify_color" data-toggle="modal"
-                                      data-target="#modifyCourse"
-                                      onClick={this.fillData.bind(this, element)}></span>
-                            </div>
-                        </li>
+                                    <span className="glyphicon glyphicon-pencil modify_color" data-toggle="modal"
+                                          data-target="#modifyCourse"
+                                          onClick={this.fillData.bind(this, element)}></span>
+                                </div>
+                            </li>
+                        }else{
+                            return <li key={index} className="image_box">
+                                <a href="/detail" target="_blank">
+                                    <img src={element.image_path} title={element.title}
+                                         alt={element.title} className="img_size"/>
+                                </a>
+                                <div className="course_title">
+                                    <div onClick={this.scanDetail.bind(this, element)}>{element.title}</div>
+                                    <span className="glyphicon glyphicon-trash"
+                                          onClick={this.removeCourse.bind(this, element.id)}
+                                          style={{"margin-right": "30px", "margin-top": "10px"}}>
+                                </span>
+                                    <span className="glyphicon glyphicon-pencil modify_color" data-toggle="modal"
+                                          data-target="#modifyCourse"
+                                          onClick={this.fillData.bind(this, element)}></span>
+                                </div>
+                            </li>
+                        }
+
                     })}
                     <li className="image_box">
                         <a href="/insertCourse" target="_blank">

@@ -14,17 +14,24 @@ let insertCourse = (information, res)=> {
     })
 };
 
-let queryCourse = (req, res)=> {
+let queryCourse = (type, res)=> {
     let sql = `select id,title,description,teacher,duration,DATE_FORMAT(publish_date,'%Y-%m-%d') publish_date,image_path,audio_path
-    from source;`;
-    connection.query(sql, (err, result)=> {
-        if (err) {
-            res.json(false);
-        }
-        else {
-            res.json({courses: result});
-        }
-    })
+    from source`;
+    if (type === "quality") {
+        sql += ` where course_type='精品课程';`;
+    } else if (type ==="chaoxing"){
+        sql += ` where course_type='尔雅课程';`;
+    }else if(type === "all"){
+        sql += `;`;
+    }
+        connection.query(sql, (err, result)=> {
+            if (err) {
+                res.json(false);
+            }
+            else {
+                res.json({courses: result});
+            }
+        })
 };
 
 let queryCourseById = (id, res)=> {

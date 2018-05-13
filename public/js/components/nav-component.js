@@ -16,22 +16,20 @@ class Nav extends Component {
         browserHistory.push("/");
     }
 
-    home(){
-        browserHistory.push("/");
-    }
 
     userManage() {
         document.getElementById("user_manage").style.color = "#b4a078";
         browserHistory.push("/userManage");
     }
 
-    courseManage() {
+    courseManage(type) {
+        this.props.onCourseType(type);
         document.getElementById("course_manage").style.color = "#b4a078";
         browserHistory.push("/courseManage");
     }
 
     switchCourse(type){
-        this.props.course_type(type);
+        this.props.onCourseType(type);
         browserHistory.push("/courseManage");
 
     }
@@ -53,7 +51,7 @@ class Nav extends Component {
                 <ul className="nav_group">
                     <li>
                         <div className="nav_group_item">
-                            <span  onClick={this.home.bind(this)}>系统首页</span>
+                            <span  onClick={this.switchCourse.bind(this,"all")}>系统首页</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>
@@ -77,7 +75,7 @@ class Nav extends Component {
                     </li>
                     <li className={this.props.identity === "S" ? 'hidden' : ''}>
                         <div className="nav_group_item" id="course_manage">
-                            <span onClick={this.courseManage.bind(this)}>课程管理</span>
+                            <span onClick={this.courseManage.bind(this,"all")}>课程管理</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>

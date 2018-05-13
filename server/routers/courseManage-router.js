@@ -7,7 +7,7 @@ router.post("/insertCourse", (req, res)=> {
 });
 
 router.post("/allCourses", (req, res)=> {
-    CourseManage.queryCourse(req, res);
+    CourseManage.queryCourse(req.body.course_type, res);
 });
 
 router.post("/removeCourse", (req, res) => {
@@ -33,5 +33,6 @@ router.post("/modifyCourse", (req, res)=> {
 router.post("/courseById", (req, res)=> {
     CourseManage.queryCourseById(req.body.course_id, res);
 });
+
 
 module.exports = router;

@@ -2,8 +2,9 @@ import request from "superagent";
 
 export default store => next => action => {
     if (action.type === "COURSE_QUERY") {
+        console.log(action.course_type);
         request.post("/allCourses")
-            .send()
+            .send({course_type:action.course_type})
             .end((err, res) => {
                 next({type: "COURSE_QUERY_CHECK", allCourses: res.body});
             })
@@ -19,8 +20,7 @@ export default store => next => action => {
             .end((err, res) => {
                 next({type: "COURSE_EDIT_CHECK", isModify: res.body});
             })
-    }
-    else {
+    } else {
         next(action);
     }
 }

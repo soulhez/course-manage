@@ -1,4 +1,4 @@
-module.exports = ((state = {allCourses: [], courseIsRemove: "", courseIsModify: ""}, action)=> {
+module.exports = ((state = {allCourses: [], courseIsRemove: "", courseIsModify: "",course_type:""}, action)=> {
     switch (action.type) {
         case "COURSE_QUERY_CHECK": {
             state.allCourses = action.allCourses.courses;
@@ -11,6 +11,10 @@ module.exports = ((state = {allCourses: [], courseIsRemove: "", courseIsModify: 
         case "COURSE_EDIT_CHECK": {
             state.courseIsModify = action.isModify;
             return Object.assign({}, state);
+        }
+        case "COURSE_TYPE":{
+            state.courseType=action.course_type;
+            return Object.assign({},state)
         }
         default:
             return state;

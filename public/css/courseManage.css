@@ -44,3 +44,10 @@
    margin-top: 10px;
 }
 
+a:link{
+    color:black !important;
+}
+
+a:hover{
+    color:#b4a078 !important
+}

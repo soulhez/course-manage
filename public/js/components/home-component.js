@@ -5,7 +5,7 @@ import CourseManage from "../containers/courseManage-container"
 class Home extends Component {
 
     componentWillMount() {
-        this.props.getAllCourse();
+        this.props.getAllCourse("all");
     }
 
 

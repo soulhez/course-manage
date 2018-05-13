@@ -11,7 +11,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
        logout:()=>{
           dispatch({type:"LOGOUT"});
-       }
+       },
+        onCourseType:(course_type)=>{
+            dispatch({type:"COURSE_TYPE",course_type});
+        }
     }
 };
 export default connect(mapStateToProps,mapDispatchToProps)(Nav);
