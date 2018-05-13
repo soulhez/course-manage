@@ -1,11 +1,11 @@
-const express=require("express");
-const router=express.Router();
-const Register=require("../dbs/register-db");
+const express = require("express");
+const router = express.Router();
+const Register = require("../dbs/register-db");
 
-router.post("/register",(req,res)=>{
-    Register.insertUser(req.body,res);
+router.post("/register", (req, res)=> {
+    Register.insertUser(req.body, res);
 });
 
-module.exports=router;
+module.exports = router;
 
 

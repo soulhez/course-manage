@@ -4,8 +4,8 @@ import {connect} from "react-redux";
 const mapStateToProps = (state) => {
     return {
         allUsers: state.userManage.allUsers,
-        userIsRemove:state.userManage.userIsRemove,
-        userIsModify:state.userManage.userIsModify
+        userIsRemove: state.userManage.userIsRemove,
+        userIsModify: state.userManage.userIsModify
     }
 };
 
@@ -15,10 +15,10 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type: "USERS_QUERY"});
         },
         onRemove: (data)=> {
-            dispatch({type:"USER_REMOVE",data});
+            dispatch({type: "USER_REMOVE", data});
         },
-        onModifyUser:(data) =>{
-            dispatch({type:"USER_MODIFY",data});
+        onModifyUser: (data) => {
+            dispatch({type: "USER_MODIFY", data});
         }
     }
 };

@@ -45,21 +45,8 @@ class Detail extends Component {
             alert("添加评论成功");
         }
         this.props.queryCourseById(this.state.info.id);
-        console.log(this.props.course_by_id);
-
     }
 
-    modifyByTitle(){
-         this.props.modifyTitle();
-    }
-
-    modifyByDescription(){
-          this.props.modifyDescription();
-    }
-
-    modifyByTeacher(){
-        this.props.modifyTeacher();
-    }
 
     fillData(){
         let data=this.state.info;

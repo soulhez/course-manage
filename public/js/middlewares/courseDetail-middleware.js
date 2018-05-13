@@ -18,7 +18,7 @@ export default store => next => action => {
                 next({type: "QUERY_COMMIT_CHECK", commits: res.body.commits});
             })
     } else if (action.type === "MODIFY_COURSE") {
-       request.post("/modifyCourse")
+        request.post("/modifyCourse")
             .send({
                 id: action.data.id,
                 title: action.data.title,
@@ -26,13 +26,13 @@ export default store => next => action => {
                 teacher: action.data.teacher
             })
             .end((req, res)=> {
-                next({type:"MODIFY_COURSE_CHECK",isModify:res.body});
+                next({type: "MODIFY_COURSE_CHECK", isModify: res.body});
             })
-    }else if(action.type === "QUERY_COURSE_ByID"){
+    } else if (action.type === "QUERY_COURSE_ByID") {
         request.post("/courseById")
-            .send({course_id:action.course_id})
-            .end((req,res)=>{
-               next({type:"QUERY_COURSE_ByID_CHECK",course_by_id:res.body.info});
+            .send({course_id: action.course_id})
+            .end((req, res)=> {
+                next({type: "QUERY_COURSE_ByID_CHECK", course_by_id: res.body.info});
             })
     }
     else {

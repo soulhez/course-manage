@@ -31,12 +31,11 @@ app.post('/audio', upload.single('avatar'), (req, res, next)=> {
 });
 
 
-const login=require("./server/routers/login-router");
-const register=require("./server/routers/register-router");
-const logout=require("./server/routers/logout-router");
-const userManage=require("./server/routers/userManage-router");
-const courseManage=require("./server/routers/courseManage-router");
-
+const login = require("./server/routers/login-router");
+const register = require("./server/routers/register-router");
+const logout = require("./server/routers/logout-router");
+const userManage = require("./server/routers/userManage-router");
+const courseManage = require("./server/routers/courseManage-router");
 
 
 app.use(express.static("public"));
@@ -45,7 +44,6 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("./public"));
-
 
 
 app.get("*", (req, res) => {
@@ -60,12 +58,11 @@ app.use(session({
 }));
 
 
-app.use("/",login);
-app.use("/",register);
-app.use("/",logout);
+app.use("/", login);
+app.use("/", register);
+app.use("/", logout);
 app.use("/", userManage);
-app.use("/",courseManage);
-
+app.use("/", courseManage);
 
 
 var server = app.listen(3000, () => {

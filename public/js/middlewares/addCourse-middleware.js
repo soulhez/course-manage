@@ -13,7 +13,7 @@ export default store => next => action => {
                 audio: action.data.audio_path
             })
             .end((err, res)=> {
-                next({type: "ADD_COURSE_CHECK",addCourse:res.body});
+                next({type: "ADD_COURSE_CHECK", addCourse: res.body});
             })
     } else {
         next(action);

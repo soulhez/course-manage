@@ -2,53 +2,52 @@ import React, {Component} from "react";
 import {Link, browserHistory} from 'react-router';
 import request from 'superagent';
 
-class AddCourse extends Component{
-    goHome(){
+class AddCourse extends Component {
+    goHome() {
         browserHistory.push("/");
     }
 
-    isChange(id){
-        let dom=$("#"+id);
+    isChange(id) {
+        let dom = $("#" + id);
         if (dom[0].files && dom[0].files[0]) {
             let fileObj = new FileReader();
             fileObj.readAsDataURL(dom[0].files[0]);
         }
 
         let formData = new FormData();
-        formData.append('avatar',dom[0].files[0]);
-        if(id === "course_image"){
+        formData.append('avatar', dom[0].files[0]);
+        if (id === "course_image") {
             request
                 .post('/image')
                 .send(formData)
-                .end((err,res)=>{
+                .end((err, res)=> {
                     this.props.imageUpload(res.body.filePath);
                 })
-        }else if(id === "course_audio"){
+        } else if (id === "course_audio") {
             request
                 .post('/audio')
                 .send(formData)
-                .end((err,res)=>{
+                .end((err, res)=> {
                     this.props.audioUpload(res.body.filePath);
                 })
         }
     }
 
-    goBack(){
+    goBack() {
         browserHistory.push("/courseManage");
     }
 
-    componentDidUpdate(){
-       let isAdd=this.props.isAdd;
-        console.log(isAdd);
-        if(isAdd){
+    componentDidUpdate() {
+        let isAdd = this.props.isAdd;
+        if (isAdd) {
             alert("添加成功");
             browserHistory.push("/courseManage");
-        }else if(isAdd === false){
+        } else if (isAdd === false) {
             alert("添加失败");
         }
     }
 
-    publishCourse(){
+    publishCourse() {
         let course_title = $("#course_title").val();
         let course_description = $("#course_description").val();
         let course_teacher = $("#course_teacher").val();
@@ -56,29 +55,31 @@ class AddCourse extends Component{
         let publish_date = $("#publish_date").val();
         let course_image = $("#course_image").val();
         let course_audio = $("#course_audio").val();
-        let image_path=this.props.imagePath;
-        let audio_path=this.props.audioPath;
+        let image_path = this.props.imagePath;
+        let audio_path = this.props.audioPath;
         var image_reg = ".*\\.(jpg|png|gif|JPG|PNG|GIF)";
         var audio_reg = ".*\\.(mp3|mp4|WMA|WAV|APE|OGG|AAC)";
-        if(course_title === ""){
+        if (course_title === "") {
             $("#warning").html("课程标题不能为空");
-        }else if(course_description === ""){
+        } else if (course_description === "") {
             $("#warning").html("课程描述不能为空");
-        }else if( course_teacher === ""){
+        } else if (course_teacher === "") {
             $("#warning").html("主讲教师不能为空");
-        }else if(course_duration === ""){
+        } else if (course_duration === "") {
             $("#warning").html("课程时长不能为空");
-        }else if(course_image.match(image_reg) == null){
+        } else if (course_image.match(image_reg) == null) {
             $("#warning").html("请上传正确格式文件");
-        }else if(course_audio.match(audio_reg) == null){
+        } else if (course_audio.match(audio_reg) == null) {
             $("#warning").html("请上传正确格式文件");
-        }else{
-            this.props.addCourse({course_title,course_description,course_teacher,
-            course_duration,publish_date,image_path,audio_path});
+        } else {
+            this.props.addCourse({
+                course_title, course_description, course_teacher,
+                course_duration, publish_date, image_path, audio_path
+            });
         }
     }
 
-    render(){
+    render() {
         return <div>
             <div className="tip">
                 <span className="topic">西安邮电大学</span>
@@ -108,7 +109,8 @@ class AddCourse extends Component{
                     </div>
                     <div className="course_input">
                         <label className="label_position">课程时长：</label>
-                        <input type="text" className="form-control input_size" placeholder="以‘分钟’计算" id="course_duration"/>
+                        <input type="text" className="form-control input_size" placeholder="以‘分钟’计算"
+                               id="course_duration"/>
                     </div>
                     <div className="course_input">
                         <label className="label_position">发布日期：</label>
@@ -117,17 +119,19 @@ class AddCourse extends Component{
                     <form className="course_input">
                         <label className="label_position">上传图片：</label>
                         <input type="file" className="form-control input_size"
-                               id="course_image"  ref="resume"
-                               onChange={this.isChange.bind(this,"course_image")}/>
+                               id="course_image" ref="resume"
+                               onChange={this.isChange.bind(this, "course_image")}/>
                     </form>
                     <form className="course_input">
                         <label className="label_position">上传视频：</label>
                         <input type="file" className="form-control input_size"
-                               id="course_audio"   ref="course_audio"
-                               onChange={this.isChange.bind(this,"course_audio")}/>
+                               id="course_audio" ref="course_audio"
+                               onChange={this.isChange.bind(this, "course_audio")}/>
                     </form>
                     <div className="form-inline button_group">
-                        <button className="btn btn-default" style={{"margin-right":"70px"}} onClick={this.goBack.bind(this)}>返回</button>
+                        <button className="btn btn-default" style={{"margin-right": "70px"}}
+                                onClick={this.goBack.bind(this)}>返回
+                        </button>
                         <button className="btn btn-info" onClick={this.publishCourse.bind(this)}>发布</button>
                     </div>
                 </div>

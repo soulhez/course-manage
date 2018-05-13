@@ -4,8 +4,8 @@ import AddCourse from "../components/addCourse-component";
 const mapStateToProps = (state)=> {
     return {
         imagePath: state.fileUpload.imagePath,
-        audioPath:state.fileUpload.audioPath,
-        isAdd:state.fileUpload.isAdd,
+        audioPath: state.fileUpload.audioPath,
+        isAdd: state.fileUpload.isAdd,
     }
 };
 
@@ -17,8 +17,8 @@ const mapDispatchToProps = (dispatch) => {
         audioUpload: (audio_path) => {
             dispatch({type: 'AUDIO_UPLOAD', audioPath: audio_path});
         },
-        addCourse:(data) =>{
-            dispatch({type:"ADD_COURSE",data});
+        addCourse: (data) => {
+            dispatch({type: "ADD_COURSE", data});
         }
     }
 };

@@ -4,7 +4,7 @@ import {Link, browserHistory} from 'react-router';
 
 class CourseManage extends Component {
 
-    addCourse(){
+    addCourse() {
         browserHistory.push("/addCourse");
     }
 
@@ -12,75 +12,77 @@ class CourseManage extends Component {
         this.props.getAllCourse();
     }
 
-    removeCourse(course_id){
+    removeCourse(course_id) {
         this.props.removeCourse(course_id);
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         this.props.getAllCourse();
-        if(this.props.courseIsModify){
+        if (this.props.courseIsModify) {
             alert("修改成功！");
         }
     }
 
-    fillData(data){
+    fillData(data) {
         $("#course_id").val(data.id);
-        $("#course_id").attr("disabled","disabled");
+        $("#course_id").attr("disabled", "disabled");
         $("#course_title").val(data.title);
         $("#course_description").val(data.description);
         $("#course_teacher").val(data.teacher);
         $("#course_duration").val(data.duration);
-        $("#course_duration").attr("disabled","disabled");
+        $("#course_duration").attr("disabled", "disabled");
         $("#publish_date").val(data.publish_date);
-        $("#publish_date").attr("disabled","disabled");
+        $("#publish_date").attr("disabled", "disabled");
         $("#image_path").val(data.image_path);
-        $("#image_path").attr("disabled","disabled");
+        $("#image_path").attr("disabled", "disabled");
         $("#audio_path").val(data.audio_path);
-        $("#audio_path").attr("disabled","disabled");
+        $("#audio_path").attr("disabled", "disabled");
     }
 
-    modifyCourse(){
-        let id= $("#course_id").val();
-        let title=$("#course_title").val();
-        let description=$("#course_description").val();
-        let teacher=$("#course_teacher").val();
-        let duration=$("#course_duration").val();
-        let publish_date=$("#publish_date").val();
-        let image_path=$("#image_path").val();
-        let audio_path=$("#audio_path").val();
-        if(title != "" && description != "" && teacher !=""){
-            this.props.editCourse({id,title,description,teacher,duration,publish_date,image_path,audio_path});
+    modifyCourse() {
+        let id = $("#course_id").val();
+        let title = $("#course_title").val();
+        let description = $("#course_description").val();
+        let teacher = $("#course_teacher").val();
+        let duration = $("#course_duration").val();
+        let publish_date = $("#publish_date").val();
+        let image_path = $("#image_path").val();
+        let audio_path = $("#audio_path").val();
+        if (title != "" && description != "" && teacher != "") {
+            this.props.editCourse({id, title, description, teacher, duration, publish_date, image_path, audio_path});
         }
     }
 
-    scanDetail(information){
+    scanDetail(information) {
         let path = {
-            pathname:'/detail',
-            state:information,
+            pathname: '/detail',
+            state: information,
         };
-            browserHistory.push(path);
+        browserHistory.push(path);
     }
 
 
     render() {
         return <div>
             <Nav/>
-            <div className="col-md-9 col-md-offset-2 container_position" style={{"background":"#F5F5F5"}}>
+            <div className="col-md-9 col-md-offset-2 container_position" style={{"background": "#F5F5F5"}}>
                 <button className="btn btn-default" onClick={this.addCourse.bind(this)}>添加课程资源</button>
                 <div>
-                    {this.props.allCourses.map((element,index)=>{
-                        return  <li key={index} className="image_box">
+                    {this.props.allCourses.map((element, index)=> {
+                        return <li key={index} className="image_box">
                             <a href="http://www.jikexueyuan.com/course/web/" target="_blank">
-                            <img src={element.image_path} title={element.title}
-                                 alt={element.title} className="img_size"/>
+                                <img src={element.image_path} title={element.title}
+                                     alt={element.title} className="img_size"/>
                             </a>
                             <div className="course_title">
-                                <div onClick={this.scanDetail.bind(this,element)}>{element.title}</div>
-                                <span className="glyphicon glyphicon-trash"  onClick={this.removeCourse.bind(this,element.id)}
-                                      style={{"margin-right":"30px","margin-top":"10px"}}>
+                                <div onClick={this.scanDetail.bind(this, element)}>{element.title}</div>
+                                <span className="glyphicon glyphicon-trash"
+                                      onClick={this.removeCourse.bind(this, element.id)}
+                                      style={{"margin-right": "30px", "margin-top": "10px"}}>
                                 </span>
-                                <span className="glyphicon glyphicon-pencil modify_color" data-toggle="modal" data-target="#modifyCourse"
-                                onClick={this.fillData.bind(this,element)}></span>
+                                <span className="glyphicon glyphicon-pencil modify_color" data-toggle="modal"
+                                      data-target="#modifyCourse"
+                                      onClick={this.fillData.bind(this, element)}></span>
                             </div>
                         </li>
                     })}
@@ -90,7 +92,8 @@ class CourseManage extends Component {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
                             <h4 className="modal-title">修改课程信息</h4>
                         </div>
                         <div className="modal-body">
@@ -148,7 +151,8 @@ class CourseManage extends Component {
                         <div className="modal-footer">
                             <button type="button" className="btn btn-default" data-dismiss="modal">关闭</button>
                             <button type="button" className="btn btn-primary" data-dismiss="modal"
-                            onClick={this.modifyCourse.bind(this)}>修改</button>
+                                    onClick={this.modifyCourse.bind(this)}>修改
+                            </button>
                         </div>
                     </div>
                 </div>
