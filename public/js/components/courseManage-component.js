@@ -66,11 +66,11 @@ class CourseManage extends Component {
         return <div>
             <Nav/>
             <div className="col-md-9 col-md-offset-2 container_position" style={{"background": "#F5F5F5"}}>
-                <button className="btn btn-default" onClick={this.addCourse.bind(this)}>添加课程资源</button>
+                <span className="glyphicon glyphicon-plus modify_color" onClick={this.addCourse.bind(this)} style={{"margin-left":"90%","margin-top":"10px"}}>添加课程</span>
                 <div>
                     {this.props.allCourses.map((element, index)=> {
                         return <li key={index} className="image_box">
-                            <a href="http://www.jikexueyuan.com/course/web/" target="_blank">
+                            <a href="/detail" target="_blank">
                                 <img src={element.image_path} title={element.title}
                                      alt={element.title} className="img_size"/>
                             </a>
@@ -86,6 +86,15 @@ class CourseManage extends Component {
                             </div>
                         </li>
                     })}
+                    <li className="image_box">
+                        <a href="/addCourse" target="_blank">
+                            <div style={{"border": "1px solid #b4a078", "width": "250px", "height": "330px"}} title="添加课程">
+                                <span className="glyphicon glyphicon-plus modify_color"
+                                      style={{"font-size": "125px", "margin": "40% 25%"}}
+                                      onClick={this.addCourse.bind(this)} ></span>
+                            </div>
+                        </a>
+                    </li>
                 </div>
             </div>
             <div className="modal fade" id="modifyCourse" role="dialog">
