@@ -88,9 +88,9 @@ class CourseManage extends Component {
                     })}
                     <li className="image_box">
                         <a href="/addCourse" target="_blank">
-                            <div style={{"border": "1px solid #b4a078", "width": "250px", "height": "330px"}} title="添加课程">
+                            <div style={{"border": "1px solid #b4a078", "width": "250px", "height": "270px"}} title="添加课程">
                                 <span className="glyphicon glyphicon-plus modify_color"
-                                      style={{"font-size": "125px", "margin": "40% 25%"}}
+                                      style={{"font-size": "125px", "margin": "25% 25%"}}
                                       onClick={this.addCourse.bind(this)} ></span>
                             </div>
                         </a>

@@ -4,7 +4,7 @@
 
 .img_size {
     width: 250px;
-    height: 250px;
+    height: 190px;
 }
 
 .image_box {
@@ -21,7 +21,7 @@
     text-align: center;
     height: 80px;
     width:auto;
-    padding-top: 10px;
+    padding-top: 2px;
     background: white;
 }
 

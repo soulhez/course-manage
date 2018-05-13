@@ -76,6 +76,8 @@ class Login extends Component {
                                 className="radio-position">学生</span>
                                 <input type="radio" value="T" name="identity"/><span
                                 className="radio-position">教师</span>
+                                <input type="radio" value="M" name="identity"/><span
+                                className="radio-position">管理员</span>
                             </div>
                             <div className="input-container">
                                 <input type="text" className="form-control login_input_size btn btn-info"
