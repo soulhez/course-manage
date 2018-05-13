@@ -3,7 +3,6 @@ const router = express.Router();
 const CourseManage = require("../dbs/courseManage-db");
 
 router.post("/insertCourse", (req, res)=> {
-    console.log(req.body);
     CourseManage.insertCourse(req.body, res);
 });
 

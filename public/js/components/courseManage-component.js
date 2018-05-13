@@ -4,13 +4,30 @@ import {Link, browserHistory} from 'react-router';
 
 class CourseManage extends Component {
 
-    addCourse() {
-        browserHistory.push("/addCourse");
+    constructor(props) {
+        super(props);
+        this.state = {
+            type:''
+        };
     }
 
-    componentWillMount() {
-        this.props.getAllCourse();
+
+    addCourse() {
+        browserHistory.push("/insertCourse");
     }
+
+   /* componentWillMount() {
+        console.log(this.state);
+       /!* let type=this.props.location.state;
+        if(type === "quality"){
+
+        }else if(type === "chaoxing"){
+
+        }else{*!/
+            this.props.getAllCourse();
+      /!*  }*!/
+
+    }*/
 
     removeCourse(course_id) {
         this.props.removeCourse(course_id);
@@ -61,10 +78,21 @@ class CourseManage extends Component {
         browserHistory.push(path);
     }
 
+    init(type){
+        this.state.type=type;
+        if(type === "quality"){
+
+        }else if(type === "chaoxing"){
+
+        }else{
+           this.props.getAllCourse();
+        }
+    }
+
 
     render() {
         return <div>
-            <Nav/>
+            <Nav course_type={this.init}/>
             <div className="col-md-9 col-md-offset-2 container_position" style={{"background": "#F5F5F5"}}>
                 <span className="glyphicon glyphicon-plus modify_color" onClick={this.addCourse.bind(this)} style={{"margin-left":"90%","margin-top":"10px"}}>添加课程</span>
                 <div>
@@ -87,7 +115,7 @@ class CourseManage extends Component {
                         </li>
                     })}
                     <li className="image_box">
-                        <a href="/addCourse" target="_blank">
+                        <a href="/insertCourse" target="_blank">
                             <div style={{"border": "1px solid #b4a078", "width": "250px", "height": "270px"}} title="添加课程">
                                 <span className="glyphicon glyphicon-plus modify_color"
                                       style={{"font-size": "125px", "margin": "25% 25%"}}

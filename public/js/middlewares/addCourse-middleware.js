@@ -10,7 +10,8 @@ export default store => next => action => {
                 duration: action.data.course_duration,
                 date: action.data.publish_date,
                 image: action.data.image_path,
-                audio: action.data.audio_path
+                audio: action.data.course_audio,
+                course_type:action.data.course_type
             })
             .end((err, res)=> {
                 next({type: "ADD_COURSE_CHECK", addCourse: res.body});

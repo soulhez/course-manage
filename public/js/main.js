@@ -10,6 +10,7 @@ import UserManage from "./containers/userManage-container";
 import CourseManage from "./containers/courseManage-container";
 import AddCourse from "./containers/addCourse-container";
 import Detail from "./containers/courseDetail-container";
+import InsertCourse from "./containers/insertCourse-container";
 
 import LoginMiddleware from "./middlewares/login-middleware";
 import RegisterMiddleware from "./middlewares/register-middleware";
@@ -33,6 +34,7 @@ render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={Home}/>
+            <Route path="/insertCourse" component={InsertCourse}/>
             <Route path="/addCourse" component={AddCourse}/>
             <Route path="/detail" component={Detail}/>
             <Route path="/courseManage" component={CourseManage}/>

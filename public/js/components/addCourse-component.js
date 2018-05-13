@@ -55,6 +55,7 @@ class AddCourse extends Component {
         let publish_date = $("#publish_date").val();
         let course_image = $("#course_image").val();
         let course_audio = $("#course_audio").val();
+        let course_type=$("#course_type").val();
         let image_path = this.props.imagePath;
         let audio_path = this.props.audioPath;
         var image_reg = ".*\\.(jpg|png|gif|JPG|PNG|GIF)";
@@ -71,10 +72,12 @@ class AddCourse extends Component {
             $("#warning").html("请上传正确格式文件");
         } else if (course_audio.match(audio_reg) == null) {
             $("#warning").html("请上传正确格式文件");
-        } else {
+        } else if(course_type === ""){
+            $("#warning").html("课程类别不能为空");
+        } else{
             this.props.addCourse({
                 course_title, course_description, course_teacher,
-                course_duration, publish_date, image_path, audio_path
+                course_duration, publish_date, image_path, audio_path,course_type
             });
         }
     }
@@ -111,6 +114,11 @@ class AddCourse extends Component {
                         <label className="label_position">课程时长：</label>
                         <input type="text" className="form-control input_size" placeholder="以‘分钟’计算"
                                id="course_duration"/>
+                    </div>
+                    <div className="course_input">
+                        <label className="label_position">课程类别：</label>
+                        <input type="text" className="form-control input_size" placeholder="“精品课程”或“尔雅课程”"
+                               id="course_type"/>
                     </div>
                     <div className="course_input">
                         <label className="label_position">发布日期：</label>

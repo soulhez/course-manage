@@ -3,7 +3,6 @@ import {Link, browserHistory} from "react-router";
 
 class Nav extends Component {
 
-
     toLogin() {
         browserHistory.push("/login");
     }
@@ -17,6 +16,10 @@ class Nav extends Component {
         browserHistory.push("/");
     }
 
+    home(){
+        browserHistory.push("/");
+    }
+
     userManage() {
         document.getElementById("user_manage").style.color = "#b4a078";
         browserHistory.push("/userManage");
@@ -25,6 +28,12 @@ class Nav extends Component {
     courseManage() {
         document.getElementById("course_manage").style.color = "#b4a078";
         browserHistory.push("/courseManage");
+    }
+
+    switchCourse(type){
+        this.props.course_type(type);
+        browserHistory.push("/courseManage");
+
     }
 
     render() {
@@ -44,19 +53,19 @@ class Nav extends Component {
                 <ul className="nav_group">
                     <li>
                         <div className="nav_group_item">
-                            <span >系统首页</span>
+                            <span  onClick={this.home.bind(this)}>系统首页</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>
                     <li>
                         <div className="nav_group_item">
-                            <span>精品课程</span>
+                            <span onClick={this.switchCourse.bind(this,"quality")}>精品课程</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>
                     <li>
                         <div className="nav_group_item">
-                            <span>尔雅通识</span>
+                            <span onClick={this.switchCourse.bind(this,"chaoxing")}>尔雅通识</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>

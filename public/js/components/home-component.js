@@ -1,14 +1,17 @@
 import React, {Component} from "react";
 import {Link, browserHistory} from 'react-router';
-import Nav from "../containers/nav-container"
+import CourseManage from "../containers/courseManage-container"
 
 class Home extends Component {
 
+    componentWillMount() {
+        this.props.getAllCourse();
+    }
 
 
     render() {
         return <div>
-            <Nav/>
+          <CourseManage/>
         </div>
     }
 }
