@@ -2,7 +2,6 @@ import request from "superagent";
 
 export default store => next => action => {
     if (action.type === "COURSE_QUERY") {
-        console.log(action.course_type);
         request.post("/allCourses")
             .send({course_type:action.course_type})
             .end((err, res) => {

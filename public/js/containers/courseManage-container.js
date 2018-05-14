@@ -2,7 +2,6 @@ import {connect} from "react-redux";
 import CourseManage from "../components/courseManage-component";
 
 const mapStateToProps = (state) => {
-    console.log(state.courseManage.allCourses);
     return {
         allCourses: state.courseManage.allCourses,
         courseIsRemove: state.courseManage.courseIsRemove,

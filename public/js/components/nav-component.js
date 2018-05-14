@@ -3,6 +3,14 @@ import {Link, browserHistory} from "react-router";
 
 class Nav extends Component {
 
+    constructor(props){
+        super(props);
+        this.state={
+            user_name:"",
+            user_type:""
+        }
+    }
+
     toLogin() {
         browserHistory.push("/login");
     }
@@ -31,7 +39,15 @@ class Nav extends Component {
     switchCourse(type){
         this.props.onCourseType(type);
         browserHistory.push("/courseManage");
+    }
 
+    componentDidUpdate(){
+        let cookies={};
+        document.cookie.split(";").forEach((cookie)=>{
+            let parts=cookie.split("=");
+            cookies[parts[0].trim()] = parts[1].trim();
+        });
+        this.state.user_name=cookies.user;
     }
 
     render() {
@@ -67,13 +83,13 @@ class Nav extends Component {
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>
-                    <li className={this.props.identity === "S" ? 'hidden' : ''}>
+                    <li className={(this.props.identity !== "S" && !this.state.user_name)? '' : 'hidden'}>
                         <div className="nav_group_item" id="user_manage">
                             <span onClick={this.userManage.bind(this)}>用户管理</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>
-                    <li className={this.props.identity === "S" ? 'hidden' : ''}>
+                    <li className={(this.props.identity !== "S" && !this.state.user_name)? '' : 'hidden'}>
                         <div className="nav_group_item" id="course_manage">
                             <span onClick={this.courseManage.bind(this,"all")}>课程管理</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>
