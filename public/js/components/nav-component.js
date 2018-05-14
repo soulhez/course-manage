@@ -21,7 +21,7 @@ class Nav extends Component {
 
     logout() {
         this.props.logout();
-        browserHistory.push("/");
+        browserHistory.push("/courseManage");
     }
 
 
@@ -83,13 +83,13 @@ class Nav extends Component {
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>
-                    <li className={(this.props.identity !== "S" && !this.state.user_name)? '' : 'hidden'}>
+                    <li className={(this.props.identity === "M" && !this.state.user_name)? '' : 'hidden'}>
                         <div className="nav_group_item" id="user_manage">
                             <span onClick={this.userManage.bind(this)}>用户管理</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>
-                    <li className={(this.props.identity !== "S" && !this.state.user_name)? '' : 'hidden'}>
+                    <li className={(this.props.identity === "M" && !this.state.user_name)? '' : 'hidden'}>
                         <div className="nav_group_item" id="course_manage">
                             <span onClick={this.courseManage.bind(this,"all")}>课程管理</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>

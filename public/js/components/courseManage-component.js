@@ -7,7 +7,8 @@ class CourseManage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-           course_type:"all"
+           course_type:"all",
+            user_name:""
         };
     }
 
@@ -17,11 +18,23 @@ class CourseManage extends Component {
     }
 
     removeCourse(course_id) {
-        this.props.removeCourse(course_id);
+        if(this.props.identity ==="S"){
+            alert("不可操作");
+        }else if(this.state.user_name === ""){
+            alert("未登录不可操作");
+        } else{
+            this.props.removeCourse(course_id);
+        }
     }
 
     componentWillMount() {
         this.props.getAllCourse(this.state.course_type);
+        let cookies={};
+        document.cookie.split(";").forEach((cookie)=>{
+            let parts=cookie.split("=");
+            cookies[parts[0].trim()] = parts[1].trim();
+        });
+        this.state.user_name=cookies.user;
     }
 
     componentDidUpdate() {
@@ -57,7 +70,11 @@ class CourseManage extends Component {
         let publish_date = $("#publish_date").val();
         let image_path = $("#image_path").val();
         let audio_path = $("#audio_path").val();
-        if (title != "" && description != "" && teacher != "") {
+        if(this.props.identity ==="S"){
+            alert("不可操作");
+        }else if(this.state.user_name === ""){
+            alert("未登录不可操作");
+        } else if(title != "" && description != "" && teacher != ""){
             this.props.editCourse({id, title, description, teacher, duration, publish_date, image_path, audio_path});
         }
     }
@@ -70,11 +87,19 @@ class CourseManage extends Component {
         browserHistory.push(path);
     }
 
+    componentDidUpdate(){
+        if(this.props.identity === "M" && this.state.user_name){
+            $("#list_container").attr("class","col-md-9 col-md-offset-2 manage_container_position");
+        }else{
+            $("#list_container").attr("class","col-md-9 col-md-offset-2 user_container_position");
+        }
+    }
+
 
     render() {
         return <div>
             <Nav/>
-            <div className="col-md-9 col-md-offset-2 container_position" style={{"background": "#F5F5F5"}}>
+            <div style={{"background": "#F5F5F5"}} id="list_container">
                 <span className="glyphicon glyphicon-plus modify_color" onClick={this.addCourse.bind(this)} style={{"margin-left":"90%","margin-top":"10px"}}>添加课程</span>
                 <div>
                     {this.props.allCourses.map((element, index)=> {
