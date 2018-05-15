@@ -7,43 +7,44 @@ class CourseManage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-           course_type:"all",
-            user_name:""
+            user_name: "",
+            isHidden: false,
         };
     }
 
 
     addCourse() {
-        browserHistory.push("/insertCourse");
+        if (this.props.courseType === "chaoxing") {
+            browserHistory.push("/insertCourse");
+        } else {
+            browserHistory.push("/addCourse");
+        }
+
     }
 
     removeCourse(course_id) {
-        if(this.props.identity ==="S"){
+        if (this.props.identity === "S") {
             alert("不可操作");
-        }else if(this.state.user_name === ""){
+        } else if (this.state.user_name === "") {
             alert("未登录不可操作");
-        } else{
+        } else {
             this.props.removeCourse(course_id);
         }
     }
 
     componentWillMount() {
-        this.props.getAllCourse(this.state.course_type);
-        let cookies={};
-        document.cookie.split(";").forEach((cookie)=>{
-            let parts=cookie.split("=");
+        this.props.getAllCourse(this.props.courseType);
+        let cookies = {};
+        document.cookie.split(";").forEach((cookie)=> {
+            let parts = cookie.split("=");
             cookies[parts[0].trim()] = parts[1].trim();
         });
-        this.state.user_name=cookies.user;
-    }
-
-    componentDidUpdate() {
-       this.state.course_type=this.props.courseType;
-        this.props.getAllCourse(this.state.course_type);
-        if (this.props.courseIsModify) {
-            alert("修改成功！");
+        this.state.user_name = cookies.user;
+        if(this.props.identity === "S" || this.state.user_name === ""){
+            this.state.isHidden=true;
         }
     }
+
 
     fillData(data) {
         $("#course_id").val(data.id);
@@ -70,11 +71,11 @@ class CourseManage extends Component {
         let publish_date = $("#publish_date").val();
         let image_path = $("#image_path").val();
         let audio_path = $("#audio_path").val();
-        if(this.props.identity ==="S"){
+        if (this.props.identity === "S") {
             alert("不可操作");
-        }else if(this.state.user_name === ""){
+        } else if (this.state.user_name === "") {
             alert("未登录不可操作");
-        } else if(title != "" && description != "" && teacher != ""){
+        } else if (title != "" && description != "" && teacher != "") {
             this.props.editCourse({id, title, description, teacher, duration, publish_date, image_path, audio_path});
         }
     }
@@ -87,11 +88,15 @@ class CourseManage extends Component {
         browserHistory.push(path);
     }
 
-    componentDidUpdate(){
-        if(this.props.identity === "M" && this.state.user_name){
-            $("#list_container").attr("class","col-md-9 col-md-offset-2 manage_container_position");
-        }else{
-            $("#list_container").attr("class","col-md-9 col-md-offset-2 user_container_position");
+    componentDidUpdate() {
+        this.props.getAllCourse(this.props.courseType);
+        if (this.props.courseIsModify) {
+            alert("修改成功！");
+        }
+        if (this.props.identity === "M" && this.state.user_name) {
+            $("#list_container").attr("class", "col-md-9 col-md-offset-2 manage_container_position");
+        } else {
+            $("#list_container").attr("class", "col-md-9 col-md-offset-2 user_container_position");
         }
     }
 
@@ -100,10 +105,13 @@ class CourseManage extends Component {
         return <div>
             <Nav/>
             <div style={{"background": "#F5F5F5"}} id="list_container">
-                <span className="glyphicon glyphicon-plus modify_color" onClick={this.addCourse.bind(this)} style={{"margin-left":"90%","margin-top":"10px"}}>添加课程</span>
+                <div className={this.props.courseType === "all" ? "hidden" : ""}>
+                    <span className="glyphicon glyphicon-plus modify_color" onClick={this.addCourse.bind(this)}
+                          style={{"margin-left": "90%", "margin-top": "10px"}}>添加课程</span>
+                </div>
                 <div>
                     {this.props.allCourses.map((element, index)=> {
-                        if( this.state.course_type === "chaoxing"){
+                        if (this.props.courseType === "chaoxing") {
                             return <li key={index} className="image_box">
                                 <a href={element.audio_path} target="_blank">
                                     <img src={element.image_path} title={element.title}
@@ -111,17 +119,18 @@ class CourseManage extends Component {
                                 </a>
                                 <div className="course_title">
                                     <a href={element.audio_path}>{element.title}</a>
-                                    <div></div>
-                                    <span className="glyphicon glyphicon-trash"
-                                          onClick={this.removeCourse.bind(this, element.id)}
-                                          style={{"margin-right": "30px", "margin-top": "10px"}}>
+                                    <div className={this.state.isHidden?"hidden":""}>
+                                         <span className="glyphicon glyphicon-trash"
+                                               onClick={this.removeCourse.bind(this, element.id)}
+                                               style={{"margin-right": "30px", "margin-top": "10px"}}>
                                 </span>
-                                    <span className="glyphicon glyphicon-pencil modify_color" data-toggle="modal"
-                                          data-target="#modifyCourse"
-                                          onClick={this.fillData.bind(this, element)}></span>
+                                        <span className="glyphicon glyphicon-pencil modify_color" data-toggle="modal"
+                                              data-target="#modifyCourse"
+                                              onClick={this.fillData.bind(this, element)}></span>
+                                    </div>
                                 </div>
                             </li>
-                        }else{
+                        } else {
                             return <li key={index} className="image_box">
                                 <a href="/detail" target="_blank">
                                     <img src={element.image_path} title={element.title}
@@ -129,27 +138,21 @@ class CourseManage extends Component {
                                 </a>
                                 <div className="course_title">
                                     <div onClick={this.scanDetail.bind(this, element)}>{element.title}</div>
-                                    <span className="glyphicon glyphicon-trash"
-                                          onClick={this.removeCourse.bind(this, element.id)}
-                                          style={{"margin-right": "30px", "margin-top": "10px"}}>
-                                </span>
-                                    <span className="glyphicon glyphicon-pencil modify_color" data-toggle="modal"
-                                          data-target="#modifyCourse"
-                                          onClick={this.fillData.bind(this, element)}></span>
+                                    <div  className={this.state.isHidden?"hidden":""}>
+                                           <span className="glyphicon glyphicon-trash"
+                                                 onClick={this.removeCourse.bind(this, element.id)}
+                                                 style={{"margin-right": "30px", "margin-top": "10px"}}>
+                                          </span>
+                                        <span className="glyphicon glyphicon-pencil modify_color"
+                                              data-toggle="modal"
+                                              data-target="#modifyCourse"
+                                              onClick={this.fillData.bind(this, element)}></span>
+                                    </div>
+
                                 </div>
                             </li>
                         }
-
                     })}
-                    <li className="image_box">
-                        <a href="/insertCourse" target="_blank">
-                            <div style={{"border": "1px solid #b4a078", "width": "250px", "height": "270px"}} title="添加课程">
-                                <span className="glyphicon glyphicon-plus modify_color"
-                                      style={{"font-size": "125px", "margin": "25% 25%"}}
-                                      onClick={this.addCourse.bind(this)} ></span>
-                            </div>
-                        </a>
-                    </li>
                 </div>
             </div>
             <div className="modal fade" id="modifyCourse" role="dialog">

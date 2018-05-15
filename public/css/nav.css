@@ -68,8 +68,13 @@
     margin: 10%;
 }
 
-div.nav_group_item:focus, div.nav_group_item:hover, div.nav_group_item:active{
+/*div.nav_group_item:focus,*/ div.nav_group_item:hover/*, div.nav_group_item:active*/{
     text-decoration: none;
     color: #b4a078!important;
     cursor: pointer;
 }
+
+.focus_color{
+    color: #b4a078;
+}
+

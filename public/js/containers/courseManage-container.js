@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
         courseIsRemove: state.courseManage.courseIsRemove,
         courseIsModify: state.courseManage.courseIsModify,
         courseType:state.courseManage.courseType,
-        identity:state.login.identity
+        identity:state.login.identity,
+        loginUser: state.login.loginUser
     };
 };
 

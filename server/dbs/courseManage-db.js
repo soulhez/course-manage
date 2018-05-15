@@ -15,6 +15,7 @@ let insertCourse = (information, res)=> {
 };
 
 let queryCourse = (type, res)=> {
+    console.log(type);
     let sql = `select id,title,description,teacher,duration,DATE_FORMAT(publish_date,'%Y-%m-%d') publish_date,image_path,audio_path
     from source`;
     if (type === "quality") {

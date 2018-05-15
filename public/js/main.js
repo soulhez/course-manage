@@ -3,7 +3,6 @@ import {render} from "react-dom";
 import {Provider} from "react-redux";
 import {Router, Route, browserHistory} from 'react-router';
 
-import Home from "./containers/home-container"
 import Register from "./containers/register-contaienr";
 import Login from "./containers/login-container";
 import UserManage from "./containers/userManage-container";
@@ -33,11 +32,10 @@ const store = createStoreWithMiddleware(reducer);
 render(
     <Provider store={store}>
         <Router history={browserHistory}>
-            <Route path="/" component={Home}/>
             <Route path="/insertCourse" component={InsertCourse}/>
             <Route path="/addCourse" component={AddCourse}/>
             <Route path="/detail" component={Detail}/>
-            <Route path="/courseManage" component={CourseManage}/>
+            <Route path="/" component={CourseManage}/>
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
             <Route path="/userManage" component={UserManage}/>
