@@ -23,13 +23,14 @@ class CourseManage extends Component {
     }
 
     removeCourse(course_id) {
-        if (this.props.identity === "S") {
+       /* if (this.props.identity === "S") {
             alert("不可操作");
         } else if (this.state.user_name === "") {
             alert("未登录不可操作");
         } else {
-            this.props.removeCourse(course_id);
-        }
+
+        }*/
+        this.props.removeCourse(course_id);
     }
 
     componentWillMount() {
@@ -71,11 +72,11 @@ class CourseManage extends Component {
         let publish_date = $("#publish_date").val();
         let image_path = $("#image_path").val();
         let audio_path = $("#audio_path").val();
-        if (this.props.identity === "S") {
+      /*  if (this.props.identity === "S") {
             alert("不可操作");
         } else if (this.state.user_name === "") {
             alert("未登录不可操作");
-        } else if (title != "" && description != "" && teacher != "") {
+        } else*/ if (title != "" && description != "" && teacher != "") {
             this.props.editCourse({id, title, description, teacher, duration, publish_date, image_path, audio_path});
         }
     }

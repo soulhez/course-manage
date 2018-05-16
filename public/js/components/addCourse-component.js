@@ -34,14 +34,14 @@ class AddCourse extends Component {
     }
 
     goBack() {
-        browserHistory.push("/courseManage");
+        browserHistory.push("/");
     }
 
     componentDidUpdate() {
         let isAdd = this.props.isAdd;
         if (isAdd) {
             alert("添加成功");
-            browserHistory.push("/courseManage");
+            browserHistory.push("/");
         } else if (isAdd === false) {
             alert("添加失败");
         }
