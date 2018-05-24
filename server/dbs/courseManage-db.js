@@ -1,9 +1,9 @@
 const connection = require('../helps/get-urls');
 
 let insertCourse = (information, res)=> {
-    let sql = `INSERT INTO source(title,description,teacher,duration,publish_date,image_path,audio_path,
+    let sql = `INSERT INTO source(title,description,teacher,duration,publish_user,image_path,audio_path,
     course_type)VALUES('${information.title}','${information.description}','${information.teacher}',
-    '${information.duration}','${information.date}','${information.image}','${information.audio}','${information.course_type}');`;
+    '${information.duration}','${information.publish_user}','${information.image}','${information.audio}','${information.course_type}');`;
     connection.query(sql, (err, result)=> {
         if (err) {
             res.json(false);
@@ -15,7 +15,6 @@ let insertCourse = (information, res)=> {
 };
 
 let queryCourse = (type, res)=> {
-    console.log(type);
     let sql = `select id,title,description,teacher,duration,DATE_FORMAT(publish_date,'%Y-%m-%d') publish_date,image_path,audio_path
     from source`;
     if (type === "quality") {

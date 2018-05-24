@@ -16,19 +16,19 @@ class Detail extends Component {
         this.state.info = this.props.location.state;
         this.props.allCommits(this.state.info.id);
         this.props.queryCourseById(this.state.info.id);
+        $(function () {
+            $('.tabs').on('click','.tab_style',function(){
+                $(this).addClass("border_style").siblings().removeClass("border_style");
+            });
+        });
     }
 
     courseDetail() {
         $("#detail").show();
-        $("#commit").hide();
-        $(`li[id=commit_tab]`).attr("class", "tab_style");
-        $(`li[id=detail_tab]`).attr("class", "border_style");
+        $("#commit").hide()
     }
 
     courseCommit() {
-        $(`li[id=commit_tab]`).removeAttr("hidden");
-        $(`li[id=detail_tab]`).attr("class", "tab_style");
-        $(`li[id=commit_tab]`).attr("class", "border_style");
         $("#detail").hide();
         $("#commit").show();
     }
@@ -36,14 +36,16 @@ class Detail extends Component {
     publishCommit(){
         let user_name=this.props.loginUser;
         let course_id=this.state.info.id;
-        let content=$("#course_commit").val();
-        this.props.addCommit({user_name,course_id,content});
+        if(user_name === ""){
+            alert("请先登录");
+        }else{
+            let content=$("#course_commit").val();
+            this.props.addCommit({user_name,course_id,content});
+        }
+
     }
 
     componentDidUpdate(){
-        if(this.props.isInsertCommit === true){
-            alert("添加评论成功");
-        }
         this.props.queryCourseById(this.state.info.id);
     }
 
@@ -89,6 +91,8 @@ class Detail extends Component {
                             <strong>课程信息</strong></li>
                         <li className="tab_style" onClick={this.courseCommit.bind(this)} id="commit_tab">
                             <strong>我要评论</strong></li>
+                        {/*<li className="tab_style" id="course_material">
+                            <strong>课程资料</strong></li>*/}
                     </ul>
                     <div id="detail" className="content_container">
                         <div style={{"font-size": "25px", "margin": "20px 0"}}>{this.props.course_by_id.title}
@@ -120,6 +124,9 @@ class Detail extends Component {
                                  </div>
                               </div>
                         })}
+                    </div>
+                    <div className="course_material" hidden="hidden">
+
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ const mapStateToProps = (state)=> {
         imagePath: state.fileUpload.imagePath,
         audioPath: state.fileUpload.audioPath,
         isAdd: state.fileUpload.isAdd,
+        loginUser: state.login.loginUser,
     }
 };
 

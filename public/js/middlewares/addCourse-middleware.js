@@ -8,9 +8,9 @@ export default store => next => action => {
                 description: action.data.course_description,
                 teacher: action.data.course_teacher,
                 duration: action.data.course_duration,
-                date: action.data.publish_date,
+                publish_user: action.data.publish_user,
                 image: action.data.image_path,
-                audio: action.data.course_audio,
+                audio: action.data.audio_path,
                 course_type:action.data.course_type
             })
             .end((err, res)=> {

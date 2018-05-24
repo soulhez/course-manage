@@ -5,6 +5,7 @@ const mapStateToProps = (state)=> {
     return {
         imagePath: state.fileUpload.imagePath,
         isAdd: state.fileUpload.isAdd,
+        loginUser: state.login.loginUser,
     }
 };
 

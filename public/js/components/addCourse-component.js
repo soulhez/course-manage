@@ -48,14 +48,15 @@ class AddCourse extends Component {
     }
 
     publishCourse() {
+        //添加校内课程
         let course_title = $("#course_title").val();
         let course_description = $("#course_description").val();
         let course_teacher = $("#course_teacher").val();
         let course_duration = $("#course_duration").val();
-        let publish_date = $("#publish_date").val();
+        let publish_user=this.props.loginUser;
         let course_image = $("#course_image").val();
         let course_audio = $("#course_audio").val();
-        let course_type=$("#course_type").val();
+        let course_type=$("#course_type option:selected").val();
         let image_path = this.props.imagePath;
         let audio_path = this.props.audioPath;
         var image_reg = ".*\\.(jpg|png|gif|JPG|PNG|GIF)";
@@ -77,7 +78,7 @@ class AddCourse extends Component {
         } else{
             this.props.addCourse({
                 course_title, course_description, course_teacher,
-                course_duration, publish_date, image_path, audio_path,course_type
+                course_duration, publish_user, image_path, audio_path,course_type
             });
         }
     }
@@ -117,12 +118,10 @@ class AddCourse extends Component {
                     </div>
                     <div className="course_input">
                         <label className="label_position">课程类别：</label>
-                        <input type="text" className="form-control input_size" placeholder="“精品课程”或“尔雅课程”"
-                               id="course_type"/>
-                    </div>
-                    <div className="course_input">
-                        <label className="label_position">发布日期：</label>
-                        <input type="date" className="form-control input_size" id="publish_date"/>
+                        <select id="course_type" className="form-control input_size">
+                            <option value="精品课程">精品课程</option>
+                            <option value="尔雅课程">尔雅课程</option>
+                        </select>
                     </div>
                     <form className="course_input">
                         <label className="label_position">上传图片：</label>

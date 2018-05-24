@@ -27,28 +27,29 @@ class InsertCourse extends Component {
     }
 
     goBack() {
-        browserHistory.push("/courseManage");
+        browserHistory.push("/");
     }
 
     componentDidUpdate() {
         let isAdd = this.props.isAdd;
         if (isAdd) {
             alert("添加成功");
-            browserHistory.push("/courseManage");
+            browserHistory.push("/");
         } else if (isAdd === false) {
             alert("添加失败");
         }
     }
 
     publishCourse() {
+        /*添加尔雅课程*/
         let course_title = $("#course_title").val();
         let course_description = $("#course_description").val();
         let course_teacher = $("#course_teacher").val();
         let course_duration = $("#course_duration").val();
-        let publish_date = $("#publish_date").val();
+        let publish_user = this.props.loginUser;
         let course_image = $("#course_image").val();
-        let course_audio = $("#course_detail").val();
-        let course_type=$("#course_type").val();
+        let audio_path = $("#course_detail").val();
+        let course_type=$("#course_type option:selected").val();
         let image_path = this.props.imagePath;
         var image_reg = ".*\\.(jpg|png|gif|JPG|PNG|GIF)";
         if (course_title === "") {
@@ -66,9 +67,9 @@ class InsertCourse extends Component {
         } else if(course_type === ""){
             $("#warning").html("课程类别不能为空");
         } else{
-            this.props.addCourse({
+          this.props.addCourse({
                 course_title, course_description, course_teacher,
-                course_duration, publish_date, image_path, course_audio,course_type
+                course_duration, publish_user, image_path, audio_path,course_type
             });
         }
     }
@@ -108,17 +109,15 @@ class InsertCourse extends Component {
                     </div>
                     <div className="course_input">
                         <label className="label_position">课程类别：</label>
-                        <input type="text" className="form-control input_size" placeholder="“精品课程”或“尔雅课程”"
-                               id="course_type"/>
+                        <select id="course_type" className="form-control input_size">
+                            <option value="精品课程">精品课程</option>
+                            <option value="尔雅课程">尔雅课程</option>
+                        </select>
                     </div>
                     <div className="course_input">
                         <label className="label_position">课程详情：</label>
                         <input type="text" className="form-control input_size" placeholder="课程详情地址"
                                id="course_detail"/>
-                    </div>
-                    <div className="course_input">
-                        <label className="label_position">发布日期：</label>
-                        <input type="date" className="form-control input_size" id="publish_date"/>
                     </div>
                     <form className="course_input">
                         <label className="label_position">上传图片：</label>

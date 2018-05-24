@@ -44,6 +44,8 @@ class CourseManage extends Component {
         if(this.props.identity === "S" || this.state.user_name === ""){
             this.state.isHidden=true;
         }
+
+
     }
 
 
@@ -106,7 +108,7 @@ class CourseManage extends Component {
         return <div>
             <Nav/>
             <div style={{"background": "#F5F5F5"}} id="list_container">
-                <div className={this.props.courseType === "all" ? "hidden" : ""}>
+                <div className={this.props.courseType==="all"? "hidden" : ""}>
                     <span className="glyphicon glyphicon-plus modify_color" onClick={this.addCourse.bind(this)}
                           style={{"margin-left": "90%", "margin-top": "10px"}}>添加课程</span>
                 </div>

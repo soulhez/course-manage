@@ -3,10 +3,10 @@ import {Link, browserHistory} from "react-router";
 
 class Nav extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            user_name:""
+        this.state = {
+            user_name: ""
         }
     }
 
@@ -23,11 +23,10 @@ class Nav extends Component {
         browserHistory.push("/login");
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.props.onCourseType("all");
-        $("#home").addClass("focus_color");
-      $(function () {
-            $('.nav_group').on('click','.nav_item',function(){
+        $(function () {
+            $('.nav_group').on('click', '.nav_item', function () {
                 $(this).addClass("focus_color").siblings().removeClass("focus_color");
             });
         });
@@ -35,29 +34,28 @@ class Nav extends Component {
 
 
     userManage() {
+        $(this).addClass("focus_color");
         browserHistory.push("/userManage");
-        $("#user_manage").addClass("focus_color");
     }
 
     courseManage(type) {
         this.props.onCourseType(type);
         browserHistory.push("/");
-        $("#course_manage").addClass("focus_color");
     }
 
-    switchCourse(type){
+    switchCourse(type) {
         this.props.onCourseType(type);
         browserHistory.push("/");
     }
 
 
-    componentDidUpdate(){
-        let cookies={};
-        document.cookie.split(";").forEach((cookie)=>{
-            let parts=cookie.split("=");
+    componentDidUpdate() {
+        let cookies = {};
+        document.cookie.split(";").forEach((cookie)=> {
+            let parts = cookie.split("=");
             cookies[parts[0].trim()] = parts[1].trim();
         });
-        this.state.user_name=cookies.user;
+        this.state.user_name = cookies.user;
     }
 
     render() {
@@ -76,33 +74,39 @@ class Nav extends Component {
             <div className="nav_position">
                 <ul className="nav_group">
                     <li className="nav_item">
-                        <div className="nav_group_item"  id="home" onClick={this.switchCourse.bind(this,"all")}>
+                        <div className="nav_group_item" id="home" onClick={this.switchCourse.bind(this, "all")}>
                             <span>系统首页</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>
                     <li className="nav_item">
-                        <div  className="nav_group_item" id="quality"   onClick={this.switchCourse.bind(this,"quality")}>
+                        <div className="nav_group_item" id="quality" onClick={this.switchCourse.bind(this, "quality")}>
                             <span>精品课程</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>
                     <li className="nav_item">
-                        <div className="nav_group_item"  id="chaoxing" onClick={this.switchCourse.bind(this,"chaoxing")}>
+                        <div className="nav_group_item" id="chaoxing"
+                             onClick={this.switchCourse.bind(this, "chaoxing")}>
                             <span>尔雅通识</span>
                             <span className="glyphicon glyphicon-chevron-right"></span>
                         </div>
                     </li>
-                    <li className={(this.props.identity === "M" && !this.state.user_name)? '' : 'hidden'}>
-                        <div className="nav_group_item" id="user_manage" onClick={this.userManage.bind(this)}>
-                            <span>用户管理</span>
-                            <span className="glyphicon glyphicon-chevron-right"></span>
+                    <li className="nav_item">
+                        <div className={(this.props.identity === "M" && !this.state.user_name) ? '' : 'hidden'}>
+                            <div className="nav_group_item" id="user_manage" onClick={this.userManage.bind(this)}>
+                                <span>用户管理</span>
+                                <span className="glyphicon glyphicon-chevron-right"></span>
+                            </div>
                         </div>
                     </li>
-                    <li className={(this.props.identity === "M" && !this.state.user_name)? '' : 'hidden'}>
-                        <div className="nav_group_item" id="course_manage" onClick={this.courseManage.bind(this,"all")}>
-                            <span>课程管理</span>
-                            <span className="glyphicon glyphicon-chevron-right"></span>
+                    <li className="nav_item">
+                        <div className={(this.props.identity === "M" && !this.state.user_name) ? '' : 'hidden'}>
+                            <div className="nav_group_item" id="course_manage"
+                                 onClick={this.courseManage.bind(this, "all")}>
+                                <span>课程管理</span>
+                                <span className="glyphicon glyphicon-chevron-right"></span>
+                            </div>
                         </div>
                     </li>
                 </ul>
